@@ -1,0 +1,20 @@
+.capa {
+    background-color: grey;
+    height: 100vh;
+}
+
+.abertura {
+    color: #fefefe;
+}
+
+.conteudo {
+    position: fixed;
+    /* align-items: baseline; */
+    bottom: 0;
+    margin-left: auto;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #767676 !important;
+}
+
