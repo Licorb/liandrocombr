@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5 {
 }
 
 footer {
-    background-color: bisque;
+    background-color: #e5eef3;
 }
 .capa {
     background-color: #f1f1f1;
@@ -44,6 +44,10 @@ footer {
     /* align-items: baseline; */
     bottom: 0;
     margin-left: auto;
+}
+
+.icones-sociais {
+    width: 32px;
 }
 
 .accordion-button:not(.collapsed) {
