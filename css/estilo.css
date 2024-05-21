@@ -27,6 +27,16 @@ footer {
 
 .abertura-inferior {
     height: 30vh;
+    z-index: 99999;
+}
+
+.bg-cards {
+    background-color: #f1f1f1;
+}
+
+.abertura-inferior h3 {
+    position: absolute;
+    bottom: 12vh;
 }
 
 .conteudo {
@@ -40,16 +50,13 @@ footer {
     background-color: #767676 !important;
 }
 
-.mimo {
-    background-color: aliceblue;
-}
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     .abertura-superior {
-        height: auto;
+        height: 100vh;
     }
-    .abertura-inferior {
+    /* .abertura-inferior {
         height: auto;
-    }
+    } */
 }
 
