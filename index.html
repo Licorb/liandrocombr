@@ -16,9 +16,9 @@
       --green:    #3a6b4a;
       --green-lt: #5a8f6a;
       --green-xl: #d4e6d9;
-      --gray:     #2a2a2a;
-      --gray-mid: #666;
-      --gray-lt:  #aaa;
+      --gray:     #1e1e1e;
+      --gray-mid: #4a4a4a;
+      --gray-lt:  #888;
       --serif:    'DM Serif Display', Georgia, serif;
       --sans:     'DM Sans', system-ui, sans-serif;
       --nav-h:    64px;
@@ -48,26 +48,52 @@
     nav.scrolled { border-color: rgba(42,42,42,0.08); box-shadow: 0 2px 24px rgba(42,42,42,0.05); }
     .nav-logo { font-family: var(--serif); font-size: 1.15rem; color: var(--gray); letter-spacing: -0.01em; text-decoration: none; }
     .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--green); }
 
     /* ── HERO ── */
     #hero {
       min-height: calc(100vh - var(--nav-h));
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 80px 48px; position: relative; overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative; overflow: hidden;
     }
     #hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 60% at 80% 50%, var(--green-xl) 0%, transparent 70%);
-      opacity: 0.5; pointer-events: none;
+      background: radial-gradient(ellipse 70% 70% at 75% 50%, var(--green-xl) 0%, transparent 65%);
+      opacity: 0.45; pointer-events: none;
     }
-    .hero-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
-    .hero-title { font-family: var(--serif); font-size: clamp(2rem, 3.8vw, 3.6rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--gray); max-width: 520px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+
+    /* Left: photo */
+    .hero-photo-col {
+      display: flex; align-items: center; justify-content: center;
+      padding: 60px 48px;
+      position: relative; z-index: 1;
+    }
+    .hero-photo-wrap {
+      width: min(340px, 80%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--green);
+      overflow: hidden;
+      box-shadow: 0 8px 48px rgba(58,107,74,0.22);
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+    .hero-photo-wrap svg { width: 100%; height: 100%; display: block; }
+
+    /* Right: text */
+    .hero-text-col {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px 80px 48px;
+      position: relative; z-index: 1;
+    }
+    .hero-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.4s forwards; }
+    .hero-title { font-family: var(--serif); font-size: clamp(2rem, 3.2vw, 3.4rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--gray); opacity: 0; animation: fadeUp 0.9s 0.55s forwards; }
     .hero-title em { font-style: italic; color: var(--green); }
-    .hero-sub { margin-top: 24px; max-width: 390px; font-size: 0.95rem; color: var(--gray-mid); line-height: 1.75; opacity: 0; animation: fadeUp 0.9s 0.6s forwards; }
-    .hero-cta { margin-top: 40px; display: flex; gap: 16px; opacity: 0; animation: fadeUp 0.9s 0.8s forwards; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.25s; cursor: pointer; border: none; }
+    .hero-sub { margin-top: 24px; font-size: 1rem; color: var(--gray-mid); line-height: 1.75; max-width: 420px; opacity: 0; animation: fadeUp 0.9s 0.7s forwards; }
+    .hero-cta { margin-top: 40px; display: flex; gap: 16px; opacity: 0; animation: fadeUp 0.9s 0.85s forwards; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; font-family: var(--sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: all 0.25s; cursor: pointer; border: none; }
     .btn-primary { background: var(--green); color: #fff; }
     .btn-primary:hover { background: var(--green-lt); }
     .btn-ghost { background: transparent; color: var(--gray); border: 1px solid rgba(42,42,42,0.2); }
@@ -77,9 +103,9 @@
 
     /* ── SECTION COMMONS ── */
     section { padding: 100px 48px; }
-    .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+    .section-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
     .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
-    .section-intro { color: var(--gray-mid); max-width: 520px; margin-bottom: 64px; }
+    .section-intro { color: var(--gray-mid); max-width: 520px; margin-bottom: 64px; font-size: 1rem; }
 
     /* ── PROJETOS GRID ── */
     #projetos { background: var(--bg); }
@@ -97,11 +123,11 @@
     .proj-card:nth-child(5) .proj-thumb-bg { background: #c5d1cb; }
     .proj-hover { position: absolute; inset: 0; background: rgba(42,42,42,0.72); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; opacity: 0; transition: opacity 0.3s; }
     .proj-card:hover .proj-hover { opacity: 1; }
-    .proj-hover-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green-xl); }
+    .proj-hover-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green-xl); }
     .proj-hover-title { font-family: var(--serif); font-size: 1.2rem; color: #fff; }
     .proj-info { padding: 14px 0 0; display: flex; justify-content: space-between; align-items: baseline; }
-    .proj-name { font-family: var(--serif); font-size: 1.05rem; }
-    .proj-cat { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 500; }
+    .proj-name { font-family: var(--serif); font-size: 1.08rem; }
+    .proj-cat { font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); font-weight: 500; }
 
     /* ── PROJECT OVERLAY ── */
     .poverlay {
@@ -136,11 +162,11 @@
       text-align: right;
       border-right: 1px solid rgba(42,42,42,0.08);
     }
-    .pov-counter { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 36px; display: block; }
-    .pov-cat { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    .pov-counter { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-lt); margin-bottom: 36px; display: block; }
+    .pov-cat { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
     .pov-title { font-family: var(--serif); font-size: clamp(1.5rem, 2.4vw, 2.3rem); line-height: 1.1; margin-bottom: 20px; }
-    .pov-slide-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; color: var(--gray-mid); margin-bottom: 8px; }
-    .pov-desc { font-size: 0.9rem; color: var(--gray-mid); line-height: 1.8; max-width: 320px; margin-left: auto; }
+    .pov-slide-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; color: var(--gray-mid); margin-bottom: 8px; }
+    .pov-desc { font-size: 0.97rem; color: var(--gray-mid); line-height: 1.8; max-width: 320px; margin-left: auto; }
     .pov-arrows { margin-top: 36px; display: flex; justify-content: flex-end; gap: 8px; }
     .pov-arrow {
       width: 36px; height: 36px; border-radius: 50%;
@@ -254,7 +280,7 @@
     .social-link:hover::before { width: 36px; }
 
     /* ── FOOTER ── */
-    footer { padding: 32px 48px; background: var(--bg2); display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: var(--gray-lt); border-top: 1px solid rgba(42,42,42,0.07); }
+    footer { padding: 32px 48px; background: var(--bg2); display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--gray-mid); border-top: 1px solid rgba(30,30,30,0.12); }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -263,7 +289,7 @@
 <body>
 
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">Liandro Ribeiro</a>
+  <a href="#hero" class="nav-logo">Nome Sobrenome</a>
   <ul class="nav-links">
     <li><a href="#projetos">Projetos</a></li>
     <li><a href="#experiencia">Experiência</a></li>
@@ -272,12 +298,90 @@
 </nav>
 
 <section id="hero">
-  <p class="hero-label">Design Gráfico &amp; Usabilidade</p>
-  <h1 class="hero-title">Forma que <em>comunica.</em><br>Interface que respeita.</h1>
-  <p class="hero-sub">Trabalho na interseção entre identidade visual e experiência de uso — onde a estética serve a quem está do outro lado da tela.</p>
-  <div class="hero-cta">
-    <a href="#projetos" class="btn btn-primary">Ver projetos</a>
-    <a href="#contato" class="btn btn-ghost">Entre em contato</a>
+  <!-- Left: photo -->
+  <div class="hero-photo-col">
+    <div class="hero-photo-wrap">
+      <!-- SVG placeholder: homem pardo claro, barba, ~40 anos, cabelos pretos, peso mediano -->
+      <svg viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+        <!-- background circle (already clipped by border-radius) -->
+        <rect width="340" height="340" fill="#3a6b4a"/>
+        <!-- subtle gradient overlay -->
+        <radialGradient id="bg-grad" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#4a8060" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#2a5038" stop-opacity="0"/>
+        </radialGradient>
+        <rect width="340" height="340" fill="url(#bg-grad)"/>
+
+        <!-- Torso / shoulders (slightly broader, medium build) -->
+        <path d="M60 340 Q60 270 110 255 Q135 248 170 246 Q205 248 230 255 Q280 270 280 340Z" fill="#c8956a"/>
+        <!-- Neck -->
+        <rect x="148" y="206" width="44" height="46" rx="8" fill="#c8956a"/>
+        <!-- Head -->
+        <ellipse cx="170" cy="185" rx="58" ry="66" fill="#c8956a"/>
+        <!-- Ear left -->
+        <ellipse cx="113" cy="188" rx="9" ry="13" fill="#b8855a"/>
+        <!-- Ear right -->
+        <ellipse cx="227" cy="188" rx="9" ry="13" fill="#b8855a"/>
+
+        <!-- Hair (black, medium length, slightly wavy) -->
+        <path d="M115 155 Q112 118 130 105 Q148 90 170 88 Q195 88 212 105 Q228 118 225 155
+                 Q220 130 210 122 Q195 110 170 109 Q145 110 130 122 Q120 130 115 155Z" fill="#1a1a1a"/>
+        <!-- Hair sides -->
+        <path d="M115 155 Q110 165 112 175 Q113 185 115 190 Q112 172 115 155Z" fill="#1a1a1a"/>
+        <path d="M225 155 Q230 165 228 175 Q227 185 225 190 Q228 172 225 155Z" fill="#1a1a1a"/>
+        <!-- Hair top fill -->
+        <ellipse cx="170" cy="115" rx="55" ry="30" fill="#1a1a1a"/>
+
+        <!-- Eyebrows (dark, slightly thick) -->
+        <path d="M138 162 Q150 157 162 160" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M178 160 Q190 157 202 162" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+        <!-- Eyes -->
+        <ellipse cx="150" cy="175" rx="11" ry="8" fill="#fff"/>
+        <circle cx="150" cy="175" r="5.5" fill="#3a2010"/>
+        <circle cx="150" cy="175" r="2.5" fill="#1a0a00"/>
+        <circle cx="152" cy="172" r="1.5" fill="#fff"/>
+        <ellipse cx="190" cy="175" rx="11" ry="8" fill="#fff"/>
+        <circle cx="190" cy="175" r="5.5" fill="#3a2010"/>
+        <circle cx="190" cy="175" r="2.5" fill="#1a0a00"/>
+        <circle cx="192" cy="172" r="1.5" fill="#fff"/>
+
+        <!-- Nose -->
+        <path d="M170 180 Q164 196 160 200 Q170 204 180 200 Q176 196 170 180Z" fill="#b07850" opacity="0.7"/>
+
+        <!-- Mouth (slight smile) -->
+        <path d="M155 214 Q170 224 185 214" stroke="#8a5030" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M158 214 Q170 220 182 214" fill="#c07060" opacity="0.6"/>
+
+        <!-- Beard (dark, full but trimmed, short) -->
+        <!-- Upper lip area / mustache -->
+        <path d="M156 208 Q163 204 170 206 Q177 204 184 208 Q177 212 170 210 Q163 212 156 208Z" fill="#1a1a1a" opacity="0.85"/>
+        <!-- Chin beard -->
+        <path d="M148 218 Q153 230 157 238 Q163 244 170 245 Q177 244 183 238 Q187 230 192 218
+                 Q183 224 170 225 Q157 224 148 218Z" fill="#1a1a1a" opacity="0.85"/>
+        <!-- Side beard / jaw line left -->
+        <path d="M128 202 Q133 215 137 228 Q141 238 148 244 Q143 234 140 218 Q136 208 128 202Z" fill="#1a1a1a" opacity="0.75"/>
+        <!-- Side beard / jaw line right -->
+        <path d="M212 202 Q207 215 203 228 Q199 238 192 244 Q197 234 200 218 Q204 208 212 202Z" fill="#1a1a1a" opacity="0.75"/>
+        <!-- Cheek beard fill -->
+        <path d="M132 200 Q136 210 140 220 Q148 232 155 238 Q148 225 144 212 Q138 205 132 200Z" fill="#1a1a1a" opacity="0.5"/>
+        <path d="M208 200 Q204 210 200 220 Q192 232 185 238 Q192 225 196 212 Q202 205 208 200Z" fill="#1a1a1a" opacity="0.5"/>
+
+        <!-- Shirt collar hints -->
+        <path d="M130 252 L155 265 L170 258 L185 265 L210 252 Q190 260 170 256 Q150 260 130 252Z" fill="#e8e0d5" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Right: text -->
+  <div class="hero-text-col">
+    <p class="hero-label">Design Gráfico &amp; Usabilidade</p>
+    <h1 class="hero-title">Forma que <em>comunica.</em><br>Interface que respeita.</h1>
+    <p class="hero-sub">Trabalho na interseção entre identidade visual e experiência de uso — onde a estética serve a quem está do outro lado da tela.</p>
+    <div class="hero-cta">
+      <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+      <a href="#contato" class="btn btn-ghost">Entre em contato</a>
+    </div>
   </div>
 </section>
 
@@ -385,7 +489,7 @@
 </section>
 
 <footer>
-  <span>© 2026 Liandro Ribeiro</span>
+  <span>© 2026 Nome Sobrenome</span>
   <span>Design &amp; Usabilidade — Rio de Janeiro, BR</span>
 </footer>
 
