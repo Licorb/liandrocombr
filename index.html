@@ -1,65 +1,795 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liandro Ribeiro</title>
-    <link rel="stylesheet" href="css/estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Design & Usabilidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f4f1ec;
+      --bg2:      #edeae3;
+      --green:    #3a6b4a;
+      --green-lt: #5a8f6a;
+      --green-xl: #d4e6d9;
+      --gray:     #2a2a2a;
+      --gray-mid: #666;
+      --gray-lt:  #aaa;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+      --nav-h:    64px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--gray);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      border-color: rgba(42,42,42,0.08);
+      box-shadow: 0 2px 24px rgba(42,42,42,0.05);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--gray);
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 80% 50%, var(--green-xl) 0%, transparent 70%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--gray);
+      max-width: 720px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero-sub {
+      margin-top: 32px;
+      max-width: 440px;
+      font-size: 1.05rem;
+      color: var(--gray-mid);
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+    .hero-cta {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--green-lt); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--gray);
+      border: 1px solid rgba(42,42,42,0.2);
+    }
+    .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-intro {
+      color: var(--gray-mid);
+      max-width: 520px;
+      margin-bottom: 64px;
+    }
+
+    /* ── PROJETOS ── */
+    #projetos { background: var(--bg); }
+    .slider-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+    .slider-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .slide {
+      min-width: calc(50% - 12px);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) { .slide { min-width: 85%; } }
+    .slide-thumb {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 4/3;
+      background: var(--bg2);
+    }
+    .slide-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .slide:hover .slide-thumb img { transform: scale(1.04); }
+    .slide-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(58,107,74,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .slide:hover .slide-thumb-overlay { background: rgba(58,107,74,0.55); }
+    .slide-thumb-overlay span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.3s;
+    }
+    .slide:hover .slide-thumb-overlay span { opacity: 1; transform: translateY(0); }
+
+    /* placeholder colors */
+    .slide:nth-child(1) .slide-thumb { background: #c9d9ce; }
+    .slide:nth-child(2) .slide-thumb { background: #d5d0c7; }
+    .slide:nth-child(3) .slide-thumb { background: #cdd9d0; }
+    .slide:nth-child(4) .slide-thumb { background: #dbd5c8; }
+    .slide:nth-child(5) .slide-thumb { background: #c8d4cb; }
+
+    .slide-info { padding: 20px 0 0; }
+    .slide-cat {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 500;
+    }
+    .slide-name {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin: 4px 0 6px;
+    }
+    .slide-desc { font-size: 0.9rem; color: var(--gray-mid); }
+
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+    }
+    .slider-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(42,42,42,0.18);
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray);
+      transition: all 0.2s;
+      font-size: 1.1rem;
+    }
+    .slider-btn:hover { background: var(--green); border-color: var(--green); color: #fff; }
+    .slider-dots { display: flex; gap: 8px; margin-left: 8px; }
+    .slider-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gray-lt);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .slider-dot.active { background: var(--green); width: 20px; border-radius: 3px; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(26,26,22,0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-inner {
+      background: var(--bg);
+      max-width: 860px;
+      width: calc(100% - 48px);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.96);
+      transition: transform 0.3s;
+    }
+    .lightbox.open .lightbox-inner { transform: scale(1); }
+    .lightbox-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--gray-lt);
+    }
+    .lightbox-body { padding: 32px 36px; }
+    .lightbox-cat { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
+    .lightbox-title { font-family: var(--serif); font-size: 2rem; margin: 8px 0 12px; }
+    .lightbox-text { color: var(--gray-mid); font-size: 0.95rem; line-height: 1.75; }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.4rem; color: #fff; line-height: 1;
+    }
+
+    /* ── EXPERIÊNCIA ── */
+    #experiencia { background: var(--bg2); }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .exp-grid { grid-template-columns: 1fr; } }
+    .bio-text { font-size: 1rem; line-height: 1.8; color: var(--gray-mid); }
+    .bio-text p + p { margin-top: 1em; }
+    .bio-text strong { color: var(--gray); font-weight: 500; }
+
+    .collapses { margin-top: 0; }
+    .collapse-item {
+      border-top: 1px solid rgba(42,42,42,0.1);
+    }
+    .collapse-item:last-child { border-bottom: 1px solid rgba(42,42,42,0.1); }
+    .collapse-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+    .collapse-btn-left { display: flex; flex-direction: column; gap: 2px; }
+    .collapse-role {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gray);
+    }
+    .collapse-company {
+      font-size: 0.8rem;
+      color: var(--green);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .collapse-year {
+      font-size: 0.75rem;
+      color: var(--gray-lt);
+      white-space: nowrap;
+    }
+    .collapse-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(42,42,42,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      color: var(--gray-mid);
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .collapse-item.open .collapse-icon {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+      transform: rotate(45deg);
+    }
+    .collapse-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .collapse-body-inner {
+      padding-bottom: 20px;
+      font-size: 0.92rem;
+      color: var(--gray-mid);
+      line-height: 1.75;
+    }
+
+    /* ── CONTATO ── */
+    #contato { background: var(--bg); }
+    .contact-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    .contact-email {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      color: var(--gray);
+      text-decoration: none;
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .contact-email:hover { color: var(--green); }
+    .social-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .social-link::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 1px;
+      background: currentColor;
+      transition: width 0.25s;
+    }
+    .social-link:hover { color: var(--green); }
+    .social-link:hover::before { width: 36px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--gray-lt);
+      border-top: 1px solid rgba(42,42,42,0.07);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
 </head>
 <body>
-    <section>
-        <div class="container-fluid capa">
-          <div class="container abertura-superior pt-5">
-            <div class="row align-items-center">
-              <div class="col-5 mimo">
-                <img class="float-end" src="img/foto.png" alt="">
-              </div>
-              <div class="col-7">
-                <h1>Nonononon Nononon</h1>
-                <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem velit dolorem consequatur repudiandae. Cumque sit delectus animi soluta illum velit optio? Exercitationem omnis nam quia, nihil cupiditate sint velit similique.</h3>
-              </div>
-            </div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Liandro Ribeiro</a>
+  <ul class="nav-links">
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#experiencia">Experiência</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-label">Design Gráfico &amp; Usabilidade</p>
+  <h1 class="hero-title">Forma que<br><em>comunica.</em><br>Interface que<br>respeita.</h1>
+  <p class="hero-sub">
+    Trabalho na interseção entre identidade visual e experiência de uso — onde a estética serve a quem está do outro lado da tela.
+  </p>
+  <div class="hero-cta">
+    <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+    <a href="#contato" class="btn btn-ghost">Entre em contato</a>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="reveal">
+    <p class="section-label">Seleção de trabalhos</p>
+    <h2 class="section-title">Projetos</h2>
+    <p class="section-intro">Uma curadoria de projetos recentes em branding, interfaces e sistemas de design.</p>
+  </div>
+
+  <div class="slider-wrapper reveal">
+    <div class="slider-track" id="sliderTrack">
+
+      <div class="slide" onclick="openLightbox(0)">
+        <div class="slide-thumb">
+          <div class="slide-thumb-overlay"><span>Ver projeto</span></div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-cat">Branding</p>
+          <h3 class="slide-name">Identidade Botânica</h3>
+          <p class="slide-desc">Sistema visual completo para marca de cosméticos naturais.</p>
+        </div>
+      </div>
+
+      <div class="slide" onclick="openLightbox(1)">
+        <div class="slide-thumb">
+          <div class="slide-thumb-overlay"><span>Ver projeto</span></div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-cat">UX / Interface</p>
+          <h3 class="slide-name">Plataforma Educacional</h3>
+          <p class="slide-desc">Redesign de produto com foco em acessibilidade e retenção.</p>
+        </div>
+      </div>
+
+      <div class="slide" onclick="openLightbox(2)">
+        <div class="slide-thumb">
+          <div class="slide-thumb-overlay"><span>Ver projeto</span></div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-cat">Editorial</p>
+          <h3 class="slide-name">Anuário Cultural</h3>
+          <p class="slide-desc">Direção de arte para publicação impressa e digital.</p>
+        </div>
+      </div>
+
+      <div class="slide" onclick="openLightbox(3)">
+        <div class="slide-thumb">
+          <div class="slide-thumb-overlay"><span>Ver projeto</span></div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-cat">Design System</p>
+          <h3 class="slide-name">Sistema de Componentes</h3>
+          <p class="slide-desc">Biblioteca de UI para produto SaaS com equipe distribuída.</p>
+        </div>
+      </div>
+
+      <div class="slide" onclick="openLightbox(4)">
+        <div class="slide-thumb">
+          <div class="slide-thumb-overlay"><span>Ver projeto</span></div>
+        </div>
+        <div class="slide-info">
+          <p class="slide-cat">Motion</p>
+          <h3 class="slide-name">Campanha Animada</h3>
+          <p class="slide-desc">Peças em motion design para campanha de lançamento.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="slider-controls">
+    <button class="slider-btn" id="prevBtn" onclick="moveSlider(-1)">←</button>
+    <button class="slider-btn" id="nextBtn" onclick="moveSlider(1)">→</button>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIA -->
+<section id="experiencia">
+  <div class="exp-grid">
+    <div>
+      <p class="section-label reveal">Trajetória</p>
+      <h2 class="section-title reveal">Experiência</h2>
+      <div class="bio-text reveal">
+        <p>
+          Sou designer gráfico e de interfaces com mais de <strong>oito anos de atuação</strong> em projetos que vão de identidades visuais a produtos digitais de grande escala.
+        </p>
+        <p>
+          Formado em Design pela ESDI/UERJ, passei por agências, consultorias e times de produto — o que me deu uma visão ampla sobre como o design funciona em contextos muito diferentes entre si.
+        </p>
+        <p>
+          Hoje trabalho de forma independente, colaborando com marcas e equipes que valorizam o cuidado com a experiência do usuário e a coerência visual como parte estratégica do negócio.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapses reveal">
+
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left">
+            <span class="collapse-role">Designer Sênior</span>
+            <span class="collapse-company">Estúdio Autoral</span>
           </div>
-          <div class="container py-0 my-0 abertura-inferior">
-            <div class="row abertura-inferior justify-content-center">
-              <div class="col-12 col-sm-6 col-md-4">
-                <h3>Experiência do Usuário</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi rerum, at inventore ut, soluta commodi, autem qui eligendi ullam natus architecto illum voluptatem enim iure. Impedit natus quasi aut blanditiis?</p>
-                <span class="float-end">Ver mais</span>
-
-              </div>
-              <div class="col-12 col-sm-6 col-md-4">
-                <h3>Projetos Gráficos</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi rerum, at inventore ut, soluta commodi, autem qui eligendi ullam natus architecto illum voluptatem enim iure. Impedit natus quasi aut blanditiis?</p>
-                <span class="float-end">Ver mais</span>
-
-              </div>
-              <div class="col-12 col-sm-6 col-md-4">
-                <h3>Projeto 3</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi rerum, at inventore ut, soluta commodi, autem qui eligendi ullam natus architecto illum voluptatem enim iure. Impedit natus quasi aut blanditiis?</p>
-                <span class="float-end">Ver mais</span>
-
-              </div>
-
-              <div class="col-6 offset-3">
-                <a href="#">LINK 1</a>
-                <a href="#">LINK 2</a>
-                <a href="#">LINK 3</a>
-              </div>
-            </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="collapse-year">2020 — presente</span>
+            <div class="collapse-icon">+</div>
+          </div>
+        </button>
+        <div class="collapse-body">
+          <div class="collapse-body-inner">
+            Projetos independentes em branding, UI/UX e consultoria visual. Atendo clientes no Brasil e no exterior, com foco em marcas com propósito e produtos digitais que precisam de consistência e profundidade.
           </div>
         </div>
-    </section>
+      </div>
 
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left">
+            <span class="collapse-role">Lead Designer</span>
+            <span class="collapse-company">Fintech XP</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="collapse-year">2017 — 2020</span>
+            <div class="collapse-icon">+</div>
+          </div>
+        </button>
+        <div class="collapse-body">
+          <div class="collapse-body-inner">
+            Liderança do time de design de produto. Responsável pela criação do design system interno, condução de pesquisas de usuário e alinhamento com stakeholders de engenharia e negócios.
+          </div>
+        </div>
+      </div>
 
-    <script>
-      const carousel = new bootstrap.Carousel('#carrossel')
-    </script>
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left">
+            <span class="collapse-role">Designer Pleno</span>
+            <span class="collapse-company">Agência Oliva</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="collapse-year">2014 — 2017</span>
+            <div class="collapse-icon">+</div>
+          </div>
+        </button>
+        <div class="collapse-body">
+          <div class="collapse-body-inner">
+            Desenvolvimento de projetos editoriais, identidades visuais e peças para comunicação institucional. Clientes nos setores de cultura, educação e saúde.
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left">
+            <span class="collapse-role">Bacharel em Design</span>
+            <span class="collapse-company">ESDI / UERJ</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span class="collapse-year">2010 — 2014</span>
+            <div class="collapse-icon">+</div>
+          </div>
+        </button>
+        <div class="collapse-body">
+          <div class="collapse-body-inner">
+            Formação em Design com ênfase em comunicação visual e design de informação. Trabalho de conclusão sobre tipografia e hierarquia em ambientes digitais.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <p class="section-label reveal">Vamos conversar</p>
+  <h2 class="section-title reveal">Contato</h2>
+  <div class="contact-wrap reveal">
+    <a href="mailto:ola@nomesobrenome.com" class="contact-email">ola@nomesobrenome.com</a>
+    <div class="social-links">
+      <a href="#" class="social-link">Behance</a>
+      <a href="#" class="social-link">LinkedIn</a>
+      <a href="#" class="social-link">Instagram</a>
+      <a href="#" class="social-link">Dribbble</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Nome Sobrenome</span>
+  <span>Design &amp; Usabilidade — Rio de Janeiro, BR</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="lightbox-inner">
+    <div class="lightbox-img" id="lbImg">Imagem do projeto</div>
+    <div class="lightbox-body">
+      <p class="lightbox-cat" id="lbCat"></p>
+      <h3 class="lightbox-title" id="lbTitle"></h3>
+      <p class="lightbox-text" id="lbText"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── NAV SCROLL ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* ── SCROLL REVEAL ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ── SLIDER ── */
+  const track = document.getElementById('sliderTrack');
+  const slides = track.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('sliderDots');
+  let current = 0;
+  const visible = window.innerWidth <= 768 ? 1 : 2;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsContainer.appendChild(d);
+  });
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, slides.length - visible));
+    const w = slides[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * w}px)`;
+    document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function moveSlider(dir) { goTo(current + dir); }
+
+  /* ── LIGHTBOX ── */
+  const projects = [
+    { cat: 'Branding', title: 'Identidade Botânica', text: 'Sistema de identidade visual completo para marca de cosméticos naturais. Trabalho que envolveu naming, logotipo, paleta cromática, tipografia e aplicações em embalagens e materiais digitais.' },
+    { cat: 'UX / Interface', title: 'Plataforma Educacional', text: 'Redesign de produto digital com foco em acessibilidade cognitiva e retenção de usuário. Inclui pesquisa qualitativa, mapeamento de jornada e entrega de protótipos interativos.' },
+    { cat: 'Editorial', title: 'Anuário Cultural', text: 'Direção de arte para publicação anual de centro cultural, com versões impressa e digital. Projeto premiado na categoria editorial pela ADG Brasil.' },
+    { cat: 'Design System', title: 'Sistema de Componentes', text: 'Biblioteca de componentes de UI para produto SaaS com time distribuído. Documentação em Figma e Storybook, com tokens de design e guias de uso.' },
+    { cat: 'Motion', title: 'Campanha Animada', text: 'Criação de peças em motion design para campanha de lançamento de produto. Incluiu abertura, bumpers, stories e vídeos para diversas plataformas.' },
+  ];
+
+  function openLightbox(i) {
+    const p = projects[i];
+    document.getElementById('lbCat').textContent = p.cat;
+    document.getElementById('lbTitle').textContent = p.title;
+    document.getElementById('lbText').textContent = p.text;
+    document.getElementById('lbImg').textContent = p.title;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLightboxOutside(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ── COLLAPSE ── */
+  function toggleCollapse(btn) {
+    const item = btn.closest('.collapse-item');
+    const body = item.querySelector('.collapse-body');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.collapse-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.collapse-body').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+</script>
 </body>
 </html>
