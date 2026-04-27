@@ -213,11 +213,24 @@
             padding: 2.5rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            display: flex;
+            gap: 1rem;
         }
 
         .post-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-image {
+            width: 33%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .post-content {
+            width: 67%;
         }
 
         .post-card h3 {
@@ -234,9 +247,30 @@
             line-height: 1.6;
         }
 
-        .post-card .post-date {
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-date {
             font-size: 0.8rem;
             color: #999;
+            letter-spacing: 0.05em;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--color-accent);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.7rem;
+            border-radius: 3px;
+            text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
@@ -252,58 +286,21 @@
             display: flex;
             gap: 3rem;
             overflow: hidden;
-            width: 80%;
+            width: 100%;
         }
 
         .project-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
             overflow: hidden;
-            flex: 0 0 100%;
+            flex: 0 0 calc(100% / 3);
             transition: transform 0.3s ease;
         }
 
-        .project-slideshow {
-            position: relative;
+        .project-image {
             width: 100%;
             height: 300px;
-            overflow: hidden;
-            background: #f0f0f0;
-        }
-
-        .project-slide {
-            display: none;
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-        }
-
-        .project-slide.active {
-            display: block;
-        }
-
-        .slide-nav {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .slide-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slide-dot.active {
-            background: white;
-            width: 24px;
-            border-radius: 4px;
         }
 
         .project-info {
@@ -455,6 +452,10 @@
 
             .oficina-slider {
                 width: 90%;
+            }
+
+            .project-card {
+                flex: 0 0 100%;
             }
 
             .slider-btn {
