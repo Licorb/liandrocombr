@@ -140,8 +140,11 @@
             <h2 class="section-title">Oficina</h2>
         </div>
         <div class="slider-controls" id="slider-controls"></div>
-        <div class="slider-container">
+        <div class="slider-navigation">
             <button class="slider-btn prev" id="prev-btn">&larr;</button>
+            <button class="slider-btn next" id="next-btn">&rarr;</button>
+        </div>
+        <div class="slider-container">
             <div class="oficina-slider" id="oficina-slider">
                 <div class="project-card">
                     <img src="https://placehold.net/9.png?text=Dashboard" alt="Dashboard de Treinos" class="project-image">
@@ -188,7 +191,6 @@
                     </div>
                 </div>
             </div>
-            <button class="slider-btn next" id="next-btn">&rarr;</button>
         </div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
             <a href="oficina-completa.html" class="btn btn-secondary">Ver tudo</a>
@@ -282,11 +284,11 @@
 
         function handleParallax(event) {
             if (window.innerWidth <= 1024) return;
-            const x = (event.clientX / window.innerWidth - 0.5) * 18;
-            const y = (event.clientY / window.innerHeight - 0.5) * 18;
+            const x = (event.clientX / window.innerWidth - 0.5) * 24;
+            const y = (event.clientY / window.innerHeight - 0.5) * 24;
 
             parallaxTargets.forEach((el, index) => {
-                const depth = 1 + index * 0.85;
+                const depth = 1 + index * 0.75;
                 el.style.transform = `translate3d(${x / depth}px, ${y / depth * -1}px, 0)`;
             });
         }
