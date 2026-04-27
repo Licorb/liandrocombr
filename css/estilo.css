@@ -36,6 +36,18 @@
             border-bottom: 1px solid var(--color-border);
             z-index: 1000;
             padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-text);
+            font-weight: 600;
         }
 
         nav ul {
@@ -210,7 +222,7 @@
         .post-card {
             background: var(--color-card-bg);
             border: 1px solid var(--color-border);
-            padding: 2.5rem;
+            padding: 2rem;
             transition: all 0.3s ease;
             cursor: pointer;
             display: flex;
@@ -231,6 +243,24 @@
 
         .post-content {
             width: 67%;
+        }
+
+        .post-meta {
+            display: block;
+            margin-top: 0.8rem;
+        }
+
+        .post-date {
+            display: block;
+            font-size: 0.8rem;
+            color: #999;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 0.5rem;
         }
 
         .post-card h3 {
@@ -287,6 +317,7 @@
             gap: 3rem;
             flex-wrap: nowrap;
             transition: transform 0.5s ease;
+            scroll-snap-type: x mandatory;
         }
 
         .project-card {
@@ -296,6 +327,7 @@
             flex: 0 0 calc((100% - 6rem) / 3);
             min-width: calc((100% - 6rem) / 3);
             transition: transform 0.3s ease;
+            scroll-snap-align: start;
         }
 
         .project-image {
@@ -339,25 +371,50 @@
             background: var(--color-accent);
             color: white;
             border: none;
-            padding: 1rem 1.5rem;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             border-radius: 50%;
             position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
             z-index: 10;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
 
         .slider-btn:hover {
             background: #4a5f4b;
+            transform: translateY(-50%) scale(1.05);
         }
 
         .slider-btn.prev {
-            left: -60px;
+            left: 1rem;
         }
 
         .slider-btn.next {
-            right: -60px;
+            right: 1rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .slider-control {
+            width: 40px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 999px;
+            transition: background 0.3s ease;
+        }
+
+        .slider-control.active {
+            background: var(--color-accent);
         }
 
         /* Lightbox */
