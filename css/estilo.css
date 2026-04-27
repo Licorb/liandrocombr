@@ -196,8 +196,8 @@
         section > .section-header,
         section > .posts-grid,
         section > .section-actions,
-        .hero-container,
-        footer {
+        section > .slider-wrapper,
+        .hero-container {
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -300,11 +300,23 @@
         }
 
         /* Oficina Gallery */
+        .slider-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto 2rem;
+            width: 100%;
+        }
+
         .slider-container {
             position: relative;
             display: flex;
             align-items: center;
             overflow: hidden;
+            flex: 1;
+            width: 100%;
         }
 
         .oficina-slider {
@@ -377,19 +389,12 @@
             transform: none;
             z-index: 10;
             transition: background 0.3s ease, transform 0.3s ease;
+            flex-shrink: 0;
         }
 
         .slider-btn:hover {
             background: #4a5f4b;
             transform: scale(1.05);
-        }
-
-        .slider-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 0 auto 1.5rem;
-            max-width: 240px;
         }
 
         .slider-controls {
@@ -464,10 +469,12 @@
 
         /* Footer */
         footer {
-            background: var(--color-text);
+            background: #292c24;
             color: #ccc;
             padding: 3rem;
             text-align: center;
+            width: 100%;
+            margin: 0;
         }
 
         footer h3 {
