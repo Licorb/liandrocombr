@@ -141,39 +141,37 @@
         <div class="slider-container">
             <button class="slider-btn prev" id="prev-btn">&larr;</button>
             <div class="oficina-slider" id="oficina-slider">
-            <div class="project-card">
-                <img src="https://via.placeholder.com/800x600/5a6f5b/ffffff?text=Dashboard+1" alt="Dashboard de Treinos" class="project-image">
-                <div class="project-info">
-                    <h3>Dashboard de Treinos</h3>
-                    <p>Um sistema pessoal para rastrear progressão e volume de treino, construído com dados reais e visualizações customizadas.</p>
-                    <a href="#" class="project-link">Ver projeto →</a>
+                <div class="project-card">
+                    <img src="https://placehold.net/9.png?text=Dashboard" alt="Dashboard de Treinos" class="project-image">
+                    <div class="project-info">
+                        <h3>Dashboard de Treinos</h3>
+                        <p>Um sistema pessoal para rastrear progressão e volume de treino, construído com dados reais e visualizações customizadas.</p>
+                        <a href="#" class="project-link">Ver projeto →</a>
+                    </div>
                 </div>
-            </img>
-
-            <div class="project-card">
-                <img src="https://via.placeholder.com/800x600/8b7355/ffffff?text=Diorama+1" alt="Dioramas e Cenários" class="project-image">
-                <div class="project-info">
-                    <h3>Dioramas e Cenários</h3>
-                    <p>Miniaturas e ambientes construídos à mão. Exercícios de composição espacial e narrativa tridimensional.</p>
+                <div class="project-card">
+                    <img src="https://placehold.net/7.png?text=Diorama" alt="Dioramas e Cenários" class="project-image">
+                    <div class="project-info">
+                        <h3>Dioramas e Cenários</h3>
+                        <p>Miniaturas e ambientes construídos à mão. Exercícios de composição espacial e narrativa tridimensional.</p>
+                    </div>
                 </div>
-            </img>
-
-            <div class="project-card">
-                <img src="https://via.placeholder.com/800x600/4a5f6b/ffffff?text=Experimento+1" alt="Experimento Visual" class="project-image">
-                <div class="project-info">
-                    <h3>Experimentos Visuais</h3>
-                    <p>Testes de composição, cor e tipografia sem propósito além da investigação estética.</p>
+                <div class="project-card">
+                    <img src="https://placehold.net/6.png?text=Experimento" alt="Experimento Visual" class="project-image">
+                    <div class="project-info">
+                        <h3>Experimentos Visuais</h3>
+                        <p>Testes de composição, cor e tipografia sem propósito além da investigação estética.</p>
+                    </div>
                 </div>
-            </img>
-
-            <div class="project-card">
-                <img src="https://via.placeholder.com/800x600/6b4a5f/ffffff?text=Arquivo+Digital" alt="Arquivo Pessoal" class="project-image">
-                <div class="project-info">
-                    <h3>Arquivo Pessoal Digital</h3>
-                    <p>Um sistema de organização de referências visuais, textos e anotações — construído do zero.</p>
-                    <a href="#" class="project-link">Explorar →</a>
+                <div class="project-card">
+                    <img src="https://placehold.net/5.png?text=Arquivo" alt="Arquivo Pessoal" class="project-image">
+                    <div class="project-info">
+                        <h3>Arquivo Pessoal Digital</h3>
+                        <p>Um sistema de organização de referências visuais, textos e anotações — construído do zero.</p>
+                        <a href="#" class="project-link">Explorar →</a>
+                    </div>
                 </div>
-            </img>
+            </div>
             <button class="slider-btn next" id="next-btn">&rarr;</button>
         </div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
@@ -221,8 +219,10 @@
 
         function updateSlider() {
             const step = getStep();
-            const translateX = -currentIndex * (100 / step);
-            slider.style.transform = `translateX(${translateX}%)`;
+            const targetIndex = Math.min(currentIndex * step, totalSlides - 1);
+            const targetCard = slider.children[targetIndex];
+            const offset = targetCard ? targetCard.offsetLeft : 0;
+            slider.style.transform = `translateX(-${offset}px)`;
         }
 
         window.addEventListener('resize', updateSlider);
