@@ -1,90 +1,632 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liandro Ribeiro</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Liandro Ribeiro — Repositório Pessoal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TPVTRFRZ');</script>
-    <!-- End Google Tag Manager -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f7f5f2;
+            --color-text: #2a2a2a;
+            --color-accent: #5a6f5b;
+            --color-border: #d4cfc7;
+            --color-card-bg: #ffffff;
+            --font-serif: 'Crimson Pro', serif;
+            --font-sans: 'Work Sans', sans-serif;
+        }
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C39QPFP4WH"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      gtag('config', 'G-C39QPFP4WH');
-    </script>
-    
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(247, 245, 242, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        #ponto-de-partida {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            gap: 6rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--color-border);
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--color-accent);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+        }
+
+        .btn-primary:hover {
+            background: #4a5f4b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(90, 111, 91, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-text);
+            color: white;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        /* Repertório Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .post-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .post-card .post-excerpt {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .post-card .post-date {
+            font-size: 0.8rem;
+            color: #999;
+            letter-spacing: 0.05em;
+        }
+
+        /* Oficina Gallery */
+        .oficina-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .project-slideshow {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .project-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-slide.active {
+            display: block;
+        }
+
+        .slide-nav {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: var(--color-text);
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #4a5f4b;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-text);
+            color: #ccc;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-label::before {
+                display: none;
+            }
+
+            .hero-label {
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .oficina-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPVTRFRZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <section>
-        <div class="container-fluid capa">
-          <div class="container abertura-superior pt-5 pb-0 mb-0">
-            <div class="row align-items-center">
-              <div class="col-12 col-md-5 mb-0">
-                <img class="float-end" src="img/Liandrobg.png" alt="">
-              </div>
-              <div class="col-12 col-md-7">
-                <h1>Liandro Ribeiro</h1>
-                <h3>Olá, tenho mais de 15 anos de experência em design gráfico e desenvolvimento web. Desde 2015, foco no design de interfaces e na experiência do usuário para sistemas e aplicativos, criando soluções visuais inovadoras e eficazes.</h3>
-                <br>
-                <p><a href="https://www.behance.net/LiandroR" target="_blank">Veja meu portfolio</a></p>
-                <p><a href="https://www.linkedin.com/in/liandro/" target="_blank">Visite meu Linkedin</a></p>
-              </div>
+    <nav>
+        <ul>
+            <li><a href="#ponto-de-partida">Ponto de Partida</a></li>
+            <li><a href="#repertorio">Repertório</a></li>
+            <li><a href="#oficina">Oficina</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="ponto-de-partida">
+        <div class="hero-container">
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/500" alt="Liandro Ribeiro">
             </div>
-          </div>
-          <div class="container py-0 my-0 abertura-inferior">
-            <div class="row abertura-inferior justify-content-center bg-cards">
-              <div class="col-12 col-sm-6 col-md-4 bg-cards">
-                <h3 class="text-center">Experiência do Usuário</h3>
-                
-                <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi rerum, at inventore ut, soluta commodi, autem qui eligendi ullam natus architecto illum voluptatem enim iure. Impedit natus quasi aut blanditiis?</p>
-                <span class="float-end">Ver mais</span> -->
-
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 bg-cards">
-                <h3 class="text-center">Projetos Gráficos</h3>
-                
-                <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi rerum, at inventore ut, soluta commodi, autem qui eligendi ullam natus architecto illum voluptatem enim iure. Impedit natus quasi aut blanditiis?</p>
-                <span class="float-end">Ver mais</span> -->
-
-              </div>
-              <div class="col-12 col-sm-6 col-md-4 bg-cards">
-                <h3 class="text-center">Websites</h3>
-                
-                <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi rerum, at inventore ut, soluta commodi, autem qui eligendi ullam natus architecto illum voluptatem enim iure. Impedit natus quasi aut blanditiis?</p>
-                <span class="float-end">Ver mais</span> -->
-
-              </div>
-
-              <!-- <div class="col-6 offset-3">
-                <a href="#">LINK 1</a>
-                <a href="#">LINK 2</a>
-                <a href="#">LINK 3</a>
-              </div> -->
+            <div class="hero-content">
+                <div class="hero-label">Repositório Pessoal</div>
+                <h1>Este não é um <span class="highlight">site profissional</span>. É um espaço de pensamento.</h1>
+                <p>Um lugar para registrar leituras, projetos pessoais e experimentos — desde dashboards de treino até cenários em miniatura. Aqui, forma e conteúdo dialogam sem pressa.</p>
+                <div class="hero-buttons">
+                    <a href="https://behance.net" class="btn btn-primary" target="_blank">Behance</a>
+                    <a href="https://linkedin.com" class="btn btn-secondary" target="_blank">LinkedIn</a>
+                    <a href="mailto:contato@exemplo.com" class="btn btn-secondary">E-mail</a>
+                </div>
             </div>
-          </div>
         </div>
     </section>
+
+    <section id="repertorio">
+        <div class="section-header">
+            <div class="section-label">Leituras & Reflexões</div>
+            <h2 class="section-title">Repertório</h2>
+        </div>
+        <div class="posts-grid">
+            <article class="post-card">
+                <h3>Sobre a Forma e o Vazio</h3>
+                <p class="post-excerpt">Notas sobre design como espaço de respiração, não apenas preenchimento.</p>
+                <p class="post-date">12 Jan 2025</p>
+            </article>
+            <article class="post-card">
+                <h3>Livros que Moldaram 2024</h3>
+                <p class="post-excerpt">Uma seleção subjetiva de leituras que alteraram minha percepção de interface e narrativa.</p>
+                <p class="post-date">28 Dez 2024</p>
+            </article>
+            <article class="post-card">
+                <h3>O Ritual do Protótipo</h3>
+                <p class="post-excerpt">Por que construir antes de pensar pode ser mais honesto do que planejar antes de fazer.</p>
+                <p class="post-date">15 Nov 2024</p>
+            </article>
+            <article class="post-card">
+                <h3>Typografia como Pensamento</h3>
+                <p class="post-excerpt">A escolha de uma fonte não é decorativa — é epistemológica.</p>
+                <p class="post-date">02 Out 2024</p>
+            </article>
+            <article class="post-card">
+                <h3>Anotações sobre Minimalismo</h3>
+                <p class="post-excerpt">Menos como estratégia, não como estética. Uma crítica ao vazio performático.</p>
+                <p class="post-date">18 Set 2024</p>
+            </article>
+            <article class="post-card">
+                <h3>Interface e Intimidade</h3>
+                <p class="post-excerpt">Como os melhores designs criam proximidade sem invasão.</p>
+                <p class="post-date">05 Ago 2024</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="oficina">
+        <div class="section-header">
+            <div class="section-label">Projetos Pessoais</div>
+            <h2 class="section-title">Oficina</h2>
+        </div>
+        <div class="oficina-grid">
+            <div class="project-card">
+                <div class="project-slideshow" data-project="1">
+                    <img src="https://via.placeholder.com/800x600/5a6f5b/ffffff?text=Dashboard+1" alt="Dashboard de Treinos" class="project-slide active">
+                    <img src="https://via.placeholder.com/800x600/7a8f7b/ffffff?text=Dashboard+2" alt="Dashboard de Treinos" class="project-slide">
+                    <img src="https://via.placeholder.com/800x600/9aaf9b/ffffff?text=Dashboard+3" alt="Dashboard de Treinos" class="project-slide">
+                    <div class="slide-nav">
+                        <span class="slide-dot active" data-slide="0"></span>
+                        <span class="slide-dot" data-slide="1"></span>
+                        <span class="slide-dot" data-slide="2"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Dashboard de Treinos</h3>
+                    <p>Um sistema pessoal para rastrear progressão e volume de treino, construído com dados reais e visualizações customizadas.</p>
+                    <a href="#" class="project-link">Ver projeto →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-slideshow" data-project="2">
+                    <img src="https://via.placeholder.com/800x600/8b7355/ffffff?text=Diorama+1" alt="Dioramas e Cenários" class="project-slide active">
+                    <img src="https://via.placeholder.com/800x600/ab9375/ffffff?text=Diorama+2" alt="Dioramas e Cenários" class="project-slide">
+                    <img src="https://via.placeholder.com/800x600/cbb395/ffffff?text=Diorama+3" alt="Dioramas e Cenários" class="project-slide">
+                    <img src="https://via.placeholder.com/800x600/dbc3a5/ffffff?text=Diorama+4" alt="Dioramas e Cenários" class="project-slide">
+                    <div class="slide-nav">
+                        <span class="slide-dot active" data-slide="0"></span>
+                        <span class="slide-dot" data-slide="1"></span>
+                        <span class="slide-dot" data-slide="2"></span>
+                        <span class="slide-dot" data-slide="3"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Dioramas e Cenários</h3>
+                    <p>Miniaturas e ambientes construídos à mão. Exercícios de composição espacial e narrativa tridimensional.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-slideshow" data-project="3">
+                    <img src="https://via.placeholder.com/800x600/4a5f6b/ffffff?text=Experimento+1" alt="Experimento Visual" class="project-slide active">
+                    <img src="https://via.placeholder.com/800x600/6a7f8b/ffffff?text=Experimento+2" alt="Experimento Visual" class="project-slide">
+                    <div class="slide-nav">
+                        <span class="slide-dot active" data-slide="0"></span>
+                        <span class="slide-dot" data-slide="1"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Experimentos Visuais</h3>
+                    <p>Testes de composição, cor e tipografia sem propósito além da investigação estética.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-slideshow" data-project="4">
+                    <img src="https://via.placeholder.com/800x600/6b4a5f/ffffff?text=Arquivo+Digital" alt="Arquivo Pessoal" class="project-slide active">
+                    <div class="slide-nav">
+                        <span class="slide-dot active" data-slide="0"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>Arquivo Pessoal Digital</h3>
+                    <p>Um sistema de organização de referências visuais, textos e anotações — construído do zero.</p>
+                    <a href="#" class="project-link">Explorar →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <h3>Contato</h3>
+        <p>Para conversas, colaborações ou apenas trocar ideias.</p>
+        <p><a href="mailto:contato@exemplo.com">contato@exemplo.com</a></p>
+        <div class="footer-links">
+            <a href="https://behance.net" target="_blank">Behance</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+        <p class="footer-note">Feito com café e curiosidade — 2025</p>
+    </footer>
+
+    <script>
+        // Slideshow functionality
+        document.querySelectorAll('.project-slideshow').forEach(slideshow => {
+            const slides = slideshow.querySelectorAll('.project-slide');
+            const dots = slideshow.querySelectorAll('.slide-dot');
+            let currentSlide = 0;
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    slides[currentSlide].classList.remove('active');
+                    dots[currentSlide].classList.remove('active');
+                    currentSlide = index;
+                    slides[currentSlide].classList.add('active');
+                    dots[currentSlide].classList.add('active');
+                });
+            });
+
+            // Auto-advance slides every 4 seconds
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }, 4000);
+        });
+
+        // Smooth scroll offset for fixed nav
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
