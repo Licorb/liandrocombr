@@ -139,6 +139,7 @@
             <div class="section-label">Projetos Pessoais</div>
             <h2 class="section-title">Oficina</h2>
         </div>
+        <div class="slider-controls" id="slider-controls"></div>
         <div class="slider-container">
             <button class="slider-btn prev" id="prev-btn">&larr;</button>
             <div class="oficina-slider" id="oficina-slider">
@@ -189,7 +190,6 @@
             </div>
             <button class="slider-btn next" id="next-btn">&rarr;</button>
         </div>
-        <div class="slider-controls" id="slider-controls"></div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
             <a href="oficina-completa.html" class="btn btn-secondary">Ver tudo</a>
         </div>
@@ -271,9 +271,34 @@
         window.addEventListener('resize', () => {
             updateSlider();
             createSliderControls();
+            if (window.innerWidth <= 1024) {
+                resetParallax();
+            }
         });
 
         createSliderControls();
+
+        const parallaxTargets = [...document.querySelectorAll('section, footer')];
+
+        function handleParallax(event) {
+            if (window.innerWidth <= 1024) return;
+            const x = (event.clientX / window.innerWidth - 0.5) * 18;
+            const y = (event.clientY / window.innerHeight - 0.5) * 18;
+
+            parallaxTargets.forEach((el, index) => {
+                const depth = 1 + index * 0.85;
+                el.style.transform = `translate3d(${x / depth}px, ${y / depth * -1}px, 0)`;
+            });
+        }
+
+        function resetParallax() {
+            parallaxTargets.forEach(el => {
+                el.style.transform = 'translate3d(0, 0, 0)';
+            });
+        }
+
+        window.addEventListener('mousemove', handleParallax);
+        window.addEventListener('mouseleave', resetParallax);
 
         // Lightbox functionality
         document.querySelectorAll('.project-image').forEach(img => {
