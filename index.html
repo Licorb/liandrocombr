@@ -234,14 +234,46 @@
         });
 
         function updateSlider() {
+            currentIndex = Math.max(0, Math.min(currentIndex, getMaxIndex()));
             const step = getStep();
             const targetIndex = Math.min(currentIndex * step, totalSlides - 1);
             const targetCard = slider.children[targetIndex];
             const offset = targetCard ? targetCard.offsetLeft : 0;
             slider.style.transform = `translateX(-${offset}px)`;
+            updateSliderControls();
         }
 
-        window.addEventListener('resize', updateSlider);
+        function createSliderControls() {
+            const controls = document.getElementById('slider-controls');
+            controls.innerHTML = '';
+            const pages = getMaxIndex() + 1;
+            currentIndex = Math.min(currentIndex, pages - 1);
+            for (let i = 0; i < pages; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slider-control';
+                dot.dataset.index = i;
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
+                });
+                controls.appendChild(dot);
+            }
+            updateSliderControls();
+        }
+
+        function updateSliderControls() {
+            const controls = document.querySelectorAll('.slider-control');
+            controls.forEach(control => {
+                control.classList.toggle('active', Number(control.dataset.index) === currentIndex);
+            });
+        }
+
+        window.addEventListener('resize', () => {
+            updateSlider();
+            createSliderControls();
+        });
+
+        createSliderControls();
 
         // Lightbox functionality
         document.querySelectorAll('.project-image').forEach(img => {
