@@ -7,431 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #f7f5f2;
-            --color-text: #2a2a2a;
-            --color-accent: #5a6f5b;
-            --color-border: #d4cfc7;
-            --color-card-bg: #ffffff;
-            --font-serif: 'Crimson Pro', serif;
-            --font-sans: 'Work Sans', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-sans);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(247, 245, 242, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
-            z-index: 1000;
-            padding: 1.5rem 3rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: flex-end;
-            gap: 3rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--color-text);
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--color-accent);
-        }
-
-        /* Hero Section */
-        #ponto-de-partida {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 3rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 45% 55%;
-            gap: 6rem;
-            width: 100%;
-            align-items: center;
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #888;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .hero-label::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--color-border);
-        }
-
-        .hero-content h1 {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .hero-content h1 .highlight {
-            color: var(--color-accent);
-            font-style: italic;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 3rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.9rem 2rem;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            border: 1px solid var(--color-border);
-        }
-
-        .btn-primary {
-            background: var(--color-accent);
-            color: white;
-            border-color: var(--color-accent);
-        }
-
-        .btn-primary:hover {
-            background: #4a5f4b;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(90, 111, 91, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--color-text);
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-text);
-            color: white;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 6rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #888;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        /* Repertório Grid */
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .post-card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .post-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .post-card .post-excerpt {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .post-card .post-date {
-            font-size: 0.8rem;
-            color: #999;
-            letter-spacing: 0.05em;
-        }
-
-        /* Oficina Gallery */
-        .oficina-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-        }
-
-        .project-card {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            overflow: hidden;
-        }
-
-        .project-slideshow {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            background: #f0f0f0;
-        }
-
-        .project-slide {
-            display: none;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-slide.active {
-            display: block;
-        }
-
-        .slide-nav {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .slide-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slide-dot.active {
-            background: white;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        .project-info {
-            padding: 2rem;
-        }
-
-        .project-info h3 {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-            color: var(--color-text);
-        }
-
-        .project-info p {
-            font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .project-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--color-accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: #4a5f4b;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--color-text);
-            color: #ccc;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        footer h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .footer-note {
-            margin-top: 2rem;
-            font-size: 0.85rem;
-            color: #888;
-            font-style: italic;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .hero-label::before {
-                display: none;
-            }
-
-            .hero-label {
-                justify-content: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-
-            .posts-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .oficina-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 640px) {
-            nav {
-                padding: 1rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-                font-size: 0.8rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .posts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
     <nav>
@@ -498,6 +74,9 @@
                 <p class="post-date">05 Ago 2024</p>
             </article>
         </div>
+        <div class="section-actions" style="text-align: center; margin-top: 3rem;">
+            <a href="repertorio-completo.html" class="btn btn-secondary">Ver tudo</a>
+        </div>
     </section>
 
     <section id="oficina">
@@ -505,7 +84,9 @@
             <div class="section-label">Projetos Pessoais</div>
             <h2 class="section-title">Oficina</h2>
         </div>
-        <div class="oficina-grid">
+        <div class="slider-container">
+            <button class="slider-btn prev" id="prev-btn">&larr;</button>
+            <div class="oficina-slider" id="oficina-slider">
             <div class="project-card">
                 <div class="project-slideshow" data-project="1">
                     <img src="https://via.placeholder.com/800x600/5a6f5b/ffffff?text=Dashboard+1" alt="Dashboard de Treinos" class="project-slide active">
@@ -571,6 +152,10 @@
                     <a href="#" class="project-link">Explorar →</a>
                 </div>
             </div>
+            <button class="slider-btn next" id="next-btn">&rarr;</button>
+        </div>
+        <div class="section-actions" style="text-align: center; margin-top: 3rem;">
+            <a href="oficina-completa.html" class="btn btn-secondary">Ver tudo</a>
         </div>
     </section>
 
@@ -612,6 +197,42 @@
             }, 4000);
         });
 
+        // Slider functionality for oficina
+        const slider = document.getElementById('oficina-slider');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentIndex = 0;
+        const totalSlides = slider.children.length;
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalSlides - 1;
+            updateSlider();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < totalSlides - 1) ? currentIndex + 1 : 0;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const translateX = -currentIndex * 100;
+            slider.style.transform = `translateX(${translateX}%)`;
+        }
+
+        // Lightbox functionality
+        document.querySelectorAll('.project-slide').forEach(img => {
+            img.addEventListener('click', () => {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('lightbox').style.display = 'none';
+        });
+
         // Smooth scroll offset for fixed nav
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -628,5 +249,10 @@
             });
         });
     </script>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
 </body>
 </html>
