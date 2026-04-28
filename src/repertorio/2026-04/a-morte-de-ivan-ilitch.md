@@ -2,6 +2,13 @@
 layout: base.njk
 title: "A Morte de Ivan Ilitch"
 date: 2026-04-28
+permalink: "/repertorio/a-morte-de-ivan-ilitch/"
+image: "https://placehold.net/8-800x600.png"
+tags:
+  - literatura
+  - posts
+  - filosofia
+author: "Liandro Ribeiro"
 ---
 
 # A Morte de Ivan Ilitch
