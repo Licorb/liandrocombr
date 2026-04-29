@@ -6,9 +6,10 @@ permalink: "/repertorio/salvar-o-fogo/"
 image: "https://placehold.net/8-800x600.png"
 tags:
   - literatura
-  - posts
   - brasileira
+  - posts
 author: "Liandro Ribeiro"
+excerpt: "O livro é contado pela personagem principal Luzia"
 ---
 
 A adolescência, com todos os elementos de preocupações, anseios, decepções e alegrias.

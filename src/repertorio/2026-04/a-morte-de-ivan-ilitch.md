@@ -6,9 +6,10 @@ permalink: "/repertorio/a-morte-de-ivan-ilitch/"
 image: "https://placehold.net/8-800x600.png"
 tags:
   - literatura
-  - posts
   - filosofia
+  - posts
 author: "Liandro Ribeiro"
+excerpt: "O livro narra os meses finais da vida de Ivan"
 ---
 
 # A Morte de Ivan Ilitch

@@ -37,97 +37,29 @@
             </div>
         </div>
     </section>
-
+   
     <section id="repertorio">
         <div class="section-header">
             <div class="section-label">Leituras & Reflexões</div>
             <h2 class="section-title">Repertório</h2>
         </div>
         <div class="posts-grid">
+            {% for post in collections.posts | reverse | limit(6) %}
             <article class="post-card">
                 <img src="https://placehold.net/9.png?text=Reflexão+1" alt="Thumbnail" class="post-image">
                 <div class="post-content">
-                    <h3>Sobre a Forma e o Vazio</h3>
-                    <p class="post-excerpt">Notas sobre design como espaço de respiração, não apenas preenchimento.</p>
+                    <h3>{{ post.data.title }}</h3>
+                    <p class="post-excerpt">{{ post.data.excerpt }}</p>
                     <div class="post-meta">
-                        <p class="post-date">12 Jan 2025</p>
+                        <p class="post-date">{{ post.date | dateIso }}</p>
                         <div class="post-tags">
-                            <span class="tag">Design</span>
-                            <span class="tag">Reflexão</span>
+                            <span class="tag">{{ post.data.tags[0] }}</span>
+                            <span class="tag">{{ post.data.tags[1] }}</span>
                         </div>
                     </div>
                 </div>
             </article>
-            <article class="post-card">
-                <img src="https://placehold.net/8.png?text=Livros" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>Livros que Moldaram 2024</h3>
-                    <p class="post-excerpt">Uma seleção subjetiva de leituras que alteraram minha percepção de interface e narrativa.</p>
-                    <div class="post-meta">
-                        <p class="post-date">28 Dez 2024</p>
-                        <div class="post-tags">
-                            <span class="tag">Leitura</span>
-                            <span class="tag">Narrativa</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post-card">
-                <img src="https://placehold.net/7.png?text=Protótipo" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>O Ritual do Protótipo</h3>
-                    <p class="post-excerpt">Por que construir antes de pensar pode ser mais honesto do que planejar antes de fazer.</p>
-                    <div class="post-meta">
-                        <p class="post-date">15 Nov 2024</p>
-                        <div class="post-tags">
-                            <span class="tag">Protótipo</span>
-                            <span class="tag">Processo</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post-card">
-                <img src="https://placehold.net/6.png?text=Typografia" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>Typografia como Pensamento</h3>
-                    <p class="post-excerpt">A escolha de uma fonte não é decorativa — é epistemológica.</p>
-                    <div class="post-meta">
-                        <p class="post-date">02 Out 2024</p>
-                        <div class="post-tags">
-                            <span class="tag">Typografia</span>
-                            <span class="tag">Pensamento</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post-card">
-                <img src="https://placehold.net/5.png?text=Minimalismo" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>Anotações sobre Minimalismo</h3>
-                    <p class="post-excerpt">Menos como estratégia, não como estética. Uma crítica ao vazio performático.</p>
-                    <div class="post-meta">
-                        <p class="post-date">18 Set 2024</p>
-                        <div class="post-tags">
-                            <span class="tag">Minimalismo</span>
-                            <span class="tag">Crítica</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="post-card">
-                <img src="https://placehold.net/4.png?text=Interface" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>Interface e Intimidade</h3>
-                    <p class="post-excerpt">Como os melhores designs criam proximidade sem invasão.</p>
-                    <div class="post-meta">
-                        <p class="post-date">05 Ago 2024</p>
-                        <div class="post-tags">
-                            <span class="tag">Interface</span>
-                            <span class="tag">Intimidade</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
+            {% endfor %}
         </div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
             <a href="repertorio-completo.html" class="btn btn-secondary">Ver tudo</a>
@@ -139,54 +71,21 @@
             <div class="section-label">Projetos Pessoais</div>
             <h2 class="section-title">Oficina</h2>
         </div>
+         
         <div class="slider-wrapper">
             <button class="slider-btn prev" id="prev-btn">&larr;</button>
             <div class="slider-container">
                 <div class="oficina-slider" id="oficina-slider">
+                    {% for projetos in collections.oficina | reverse | limit(6) %}
                     <div class="project-card">
                         <img src="https://placehold.net/9.png?text=Dashboard" alt="Dashboard de Treinos" class="project-image">
                         <div class="project-info">
-                            <h3>Dashboard de Treinos</h3>
-                            <p>Um sistema pessoal para rastrear progressão e volume de treino, construído com dados reais e visualizações customizadas.</p>
-                            <a href="#" class="project-link">Ver projeto →</a>
+                            <h3>{{ projetos.data.title }}</h3>
+                            <p>{{ projetos.data.excerpt }}</p>
+                            <a href="#" class="project-link">{{ projetos.data.link_text }}</a>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <img src="https://placehold.net/7.png?text=Diorama" alt="Dioramas e Cenários" class="project-image">
-                        <div class="project-info">
-                            <h3>Dioramas e Cenários</h3>
-                            <p>Miniaturas e ambientes construídos à mão. Exercícios de composição espacial e narrativa tridimensional.</p>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://placehold.net/6.png?text=Experimento" alt="Experimento Visual" class="project-image">
-                        <div class="project-info">
-                            <h3>Experimentos Visuais</h3>
-                            <p>Testes de composição, cor e tipografia sem propósito além da investigação estética.</p>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://placehold.net/5.png?text=Arquivo" alt="Arquivo Pessoal" class="project-image">
-                        <div class="project-info">
-                            <h3>Arquivo Pessoal Digital</h3>
-                            <p>Um sistema de organização de referências visuais, textos e anotações — construído do zero.</p>
-                            <a href="#" class="project-link">Explorar →</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://placehold.net/3.png?text=Protótipo+2" alt="Protótipo" class="project-image">
-                        <div class="project-info">
-                            <h3>Protótipos e Interfaces</h3>
-                            <p>Uma sequência de estudos que conecta gesto, uso e simplicidade visual.</p>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://placehold.net/2.png?text=Visual" alt="Experimento Visual" class="project-image">
-                        <div class="project-info">
-                            <h3>Explorações Visuais</h3>
-                            <p>Pequenas experiências de cor e forma que ajudam a redefinir o campo do projeto.</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <button class="slider-btn next" id="next-btn">&rarr;</button>
@@ -282,25 +181,25 @@
 
         const parallaxTargets = [...document.querySelectorAll('section, footer')];
 
-        function handleParallax(event) {
-            if (window.innerWidth <= 1024) return;
-            const x = (event.clientX / window.innerWidth - 0.5) * 24;
-            const y = (event.clientY / window.innerHeight - 0.5) * 24;
+        // function handleParallax(event) {
+        //     if (window.innerWidth <= 1024) return;
+        //     const x = (event.clientX / window.innerWidth - 0.5) * 24;
+        //     const y = (event.clientY / window.innerHeight - 0.5) * 24;
 
-            parallaxTargets.forEach((el, index) => {
-                const depth = 1 + index * 0.75;
-                el.style.transform = `translate3d(${x / depth}px, ${y / depth * -1}px, 0)`;
-            });
-        }
+        //     parallaxTargets.forEach((el, index) => {
+        //         const depth = 1 + index * 0.75;
+        //         el.style.transform = `translate3d(${x / depth}px, ${y / depth * -1}px, 0)`;
+        //     });
+        // }
 
-        function resetParallax() {
-            parallaxTargets.forEach(el => {
-                el.style.transform = 'translate3d(0, 0, 0)';
-            });
-        }
+        // function resetParallax() {
+        //     parallaxTargets.forEach(el => {
+        //         el.style.transform = 'translate3d(0, 0, 0)';
+        //     });
+        // }
 
-        window.addEventListener('mousemove', handleParallax);
-        window.addEventListener('mouseleave', resetParallax);
+        // window.addEventListener('mousemove', handleParallax);
+        // window.addEventListener('mouseleave', resetParallax);
 
         // Lightbox functionality
         document.querySelectorAll('.project-image').forEach(img => {
