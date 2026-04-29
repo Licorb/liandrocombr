@@ -3,7 +3,7 @@ layout: base.njk
 title: "Salvar o Fogo"
 date: 2026-04-28
 permalink: "/repertorio/salvar-o-fogo/"
-image: "https://placehold.net/8-800x600.png"
+image: "https://placehold.net/3-800x600.png"
 tags:
   - literatura
   - brasileira

@@ -1,0 +1,17 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<main class="container-listagem">
+    <header class="listagem-header">
+        <h1>{{ title }}</h1>
+        {% if description %}<p>{{ description }}</p>{% endif %}
+    </header>
+
+    <div class="feed-horizontal">
+        {{ content | safe }}
+    </div>
+</main>
+{% endblock %}
+
+{# Isso aqui diz ao Eleventy: "Para este layout, ignore o que está no bloco relacionados" #}
+{% block relacionados %}{% endblock %}

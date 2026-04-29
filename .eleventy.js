@@ -8,10 +8,29 @@ module.exports = function(eleventyConfig) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(date).toLocaleDateString('pt-BR', options);
   });
+
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
+    if (!dateObj) return "";
+    
+    // O segredo do "sem horas" é usar o UTC para evitar que ele mude o dia 
+    // dependendo do fuso horário de onde o site é buildado
+    return new Date(dateObj).toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      timeZone: "UTC" 
+    });
+  });
   
   // Filtro de data em formato ISO (ex: 2026-04-28)
-  eleventyConfig.addFilter("dateIso", function(date) {
-    return new Date(date).toISOString().split('T')[0];
+ // No seu .eleventy.js, procure por algo parecido com isso:
+  eleventyConfig.addFilter("dateIso", (date) => {
+    if (!date) return ""; // Retorna vazio se não houver data
+    try {
+      return new Date(date).toISOString();
+    } catch (e) {
+      return ""; // Retorna vazio se a data for inválida
+    }
   });
   
   // Filtro para limitar arrays (ex: ultimos 3 posts)

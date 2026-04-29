@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav>
-        <div class="nav-brand">Nome Sobrenome</div>
+        <div class="nav-brand">Liandro Ribeiro</div>
         <ul>
             <li><a href="#ponto-de-partida">Ponto de Partida</a></li>
             <li><a href="#repertorio">Repertório</a></li>
@@ -23,7 +23,7 @@
     <section id="ponto-de-partida">
         <div class="hero-container">
             <div class="hero-image">
-                <img src="https://placehold.net/500.png?text=Perfil" alt="Liandro Ribeiro">
+                <img src="assets/img/gif-Liandro.gif" alt="Liandro Ribeiro">
             </div>
             <div class="hero-content">
                 <div class="hero-label">Repositório Pessoal</div>
@@ -45,13 +45,14 @@
         </div>
         <div class="posts-grid">
             {% for post in collections.posts | reverse | limit(6) %}
+            <a href="{{ post.data.permalink }}">
             <article class="post-card">
                 <img src="https://placehold.net/9.png?text=Reflexão+1" alt="Thumbnail" class="post-image">
                 <div class="post-content">
                     <h3>{{ post.data.title }}</h3>
                     <p class="post-excerpt">{{ post.data.excerpt }}</p>
                     <div class="post-meta">
-                        <p class="post-date">{{ post.date | dateIso }}</p>
+                        <p class="post-date">{{ post.date | readableDate }}</p>
                         <div class="post-tags">
                             <span class="tag">{{ post.data.tags[0] }}</span>
                             <span class="tag">{{ post.data.tags[1] }}</span>
@@ -59,10 +60,11 @@
                     </div>
                 </div>
             </article>
+            </a>
             {% endfor %}
         </div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
-            <a href="repertorio-completo.html" class="btn btn-secondary">Ver tudo</a>
+            <a href="repertorio/" class="btn btn-secondary">Ver tudo</a>
         </div>
     </section>
 
@@ -82,7 +84,7 @@
                         <div class="project-info">
                             <h3>{{ projetos.data.title }}</h3>
                             <p>{{ projetos.data.excerpt }}</p>
-                            <a href="#" class="project-link">{{ projetos.data.link_text }}</a>
+                            <a href="{{ projetos.data.permalink }}" class="project-link" target="_blank">Ler</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -92,7 +94,7 @@
         </div>
         <div class="slider-controls" id="slider-controls"></div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
-            <a href="oficina-completa.html" class="btn btn-secondary">Ver tudo</a>
+            <a href="oficina/" class="btn btn-secondary">Ver tudo</a>
         </div>
     </section>
 
