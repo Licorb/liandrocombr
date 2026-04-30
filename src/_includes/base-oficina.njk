@@ -71,12 +71,6 @@
                     {% endfor %}
                     {% endif %}
                 </div>
-
-                {# Controles de navegação #}
-                {# <div class="slider-controls">
-                    <button class="slider-arrow" id="prevBtn" aria-label="Imagem anterior">←</button>
-                    <button class="slider-arrow" id="nextBtn" aria-label="Próxima imagem">→</button>
-                </div> #}
             </div>
 
             {# ===== LAYOUT TEXTO + GALERIA ===== #}
@@ -146,14 +140,13 @@
 
             <ul class="trabalhos-grid">
                 {% for work in relatedWorks %}
+                <a href="{{ work.url }}">
                 <li class="trabalho-card">
-                    <a href="{{ work.url }}">
                         {% if work.image %}
                         <img src="{{ work.image }}" alt="{{ work.title }}" class="trabalho-thumbnail">
                         {% else %}
                         <img src="/assets/images/placeholder.jpg" alt="{{ work.title }}" class="trabalho-thumbnail">
                         {% endif %}
-                    </a>
                     
                     <div class="trabalho-content">
                         {% if work.date %}
@@ -171,6 +164,7 @@
                         {% endif %}
                     </div>
                 </li>
+                </a>
                 {% endfor %}
             </ul>
             <div class="voltar-container" style="margin: 20px 0;">

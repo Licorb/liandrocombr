@@ -8,10 +8,16 @@ tags:
   - literatura
   - posts
 author: "Liandro Ribeiro"
-excerpt: "Em 2025 bati a meta de ler 24 livros; em 2026 estou 5 livros atrasado, mas nada preocupado."
+excerpt: "Em 2025 bati a meta de ler 24 livros; até abril de 2026 li apenas 3. Preocupante?"
+relatedWorks:
+  - title: "Os melhores livros que li em 2025"
+    url: "/repertorio/os-melhores-livros-que-li-em-2025/"
+    image: "/assets/img/posts/crime-cais-valongo.jpg"
+    description: "Novidades e clássicos que me agradaram por diferentes motivos, mas nem tanto"
+    
 ---
 
-> _Em 2025 bati a meta de ler 24 livros; em 2026 estou 6 livros atrasado, mas nada preocupado._
+> _Em 2025 bati a meta de ler 24 livros; até abril de 2026 li apenas 3. Preocupante?_
 
 <br>
 

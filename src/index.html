@@ -23,16 +23,16 @@
     <section id="ponto-de-partida">
         <div class="hero-container">
             <div class="hero-image">
-                <img src="assets/img/gif-Liandro.gif" alt="Liandro Ribeiro">
+                <img src="assets/img/gif-Liandro2.gif" alt="Liandro Ribeiro">
             </div>
             <div class="hero-content">
                 <div class="hero-label">Repositório Pessoal</div>
                 <h1>Este não é um <span class="highlight">site profissional</span>. É um espaço de pensamento.</h1>
                 <p>Um lugar para registrar leituras, projetos pessoais e experimentos — desde dashboards de treino até cenários em miniatura. Aqui, forma e conteúdo dialogam sem pressa.</p>
                 <div class="hero-buttons">
-                    <a href="https://behance.net" class="btn btn-primary" target="_blank">Behance</a>
-                    <a href="https://linkedin.com" class="btn btn-secondary" target="_blank">LinkedIn</a>
-                    <a href="mailto:contato@exemplo.com" class="btn btn-secondary">E-mail</a>
+                    <a href="https://www.behance.net/LiandroR" class="btn btn-primary" target="_blank">Behance</a>
+                    <a href="https://www.linkedin.com/in/liandro/" class="btn btn-secondary" target="_blank">LinkedIn</a>
+                    <a href="mailto:falecom@liandro.com.br" class="btn btn-secondary">E-mail</a>
                 </div>
             </div>
         </div>
@@ -40,14 +40,14 @@
    
     <section id="repertorio">
         <div class="section-header">
-            <div class="section-label">Leituras & Reflexões</div>
             <h2 class="section-title">Repertório</h2>
+            <div class="section-label">Leituras & Reflexões</div>
         </div>
         <div class="posts-grid">
             {% for post in collections.posts | reverse | limit(6) %}
             <a href="{{ post.data.permalink }}">
             <article class="post-card">
-                <img src="https://placehold.net/9.png?text=Reflexão+1" alt="Thumbnail" class="post-image">
+                <img src="{{ post.data.image }}" alt="Thumbnail" class="post-image">
                 <div class="post-content">
                     <h3>{{ post.data.title }}</h3>
                     <p class="post-excerpt">{{ post.data.excerpt }}</p>
@@ -70,8 +70,8 @@
 
     <section id="oficina">
         <div class="section-header">
-            <div class="section-label">Projetos Pessoais</div>
             <h2 class="section-title">Oficina</h2>
+            <div class="section-label">Projetos Pessoais</div>
         </div>
          
         <div class="slider-wrapper">
@@ -79,14 +79,15 @@
             <div class="slider-container">
                 <div class="oficina-slider" id="oficina-slider">
                     {% for projetos in collections.oficina | reverse | limit(6) %}
+                    <a href="{{ projetos.data.permalink }}" class="project-link" target="_blank">
                     <div class="project-card">
-                        <img src="https://placehold.net/9.png?text=Dashboard" alt="Dashboard de Treinos" class="project-image">
+                        <img src="{{ projetos.data.image }}" alt="Dashboard de Treinos" class="project-image">
                         <div class="project-info">
                             <h3>{{ projetos.data.title }}</h3>
                             <p>{{ projetos.data.excerpt }}</p>
-                            <a href="{{ projetos.data.permalink }}" class="project-link" target="_blank">Ler</a>
                         </div>
                     </div>
+                    </a>
                     {% endfor %}
                 </div>
             </div>

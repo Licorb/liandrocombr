@@ -82,55 +82,51 @@
             </div>
         </article>
 
-        {# ===== SEÇÃO DE ÚLTIMOS FICHAMENTOS - ATUALIZADA ===== #}
+        {# ===== SEÇÃO DE TRABALHOS RELACIONADOS ===== #}
         {% block relacionados %}
-        <section class="fichamentos-section">
-            <div class="fichamentos-header">
-                <h2>Últimos Fichamentos</h2>
-                <p>Reflexões recentes sobre leituras e referências</p>
+        {% if relatedWorks %}
+        <section class="related-works-section">
+            <div class="related-works-header">
+                <h2>Trabalhos Relacionados</h2>
+                <p>Mais referências e projetos relacionados</p>
             </div>
 
-            <ul class="fichamentos-grid">
-                {% for post in collections.posts | reverse %}
-                {% if loop.index0 < 3 %}
-
-                <li class="fichamento-card">
-                    <a href="{{ post.url }}">
-                        {% if post.data.image %}
-                        <img src="{{ post.data.image }}" alt="{{ post.data.title }}" class="fichamento-thumbnail">
+            <ul class="related-works-grid">
+                {% for work in relatedWorks %}
+                <li>
+                    <a href="{{ work.url }}" class="related-work-card">
+                        {% if work.image %}
+                        <img src="{{ work.image }}" alt="{{ work.title }}" class="related-work-thumbnail">
                         {% else %}
-                        <img src="/assets/images/placeholder.jpg" alt="{{ post.data.title }}" class="fichamento-thumbnail">
+                        <img src="/assets/images/placeholder.jpg" alt="{{ work.title }}" class="related-work-thumbnail">
                         {% endif %}
+                        
+                        <div class="related-work-content">
+                            {% if work.date %}
+                            <time class="related-work-date" datetime="{{ work.date | dateIso }}">
+                                {{ work.date | dateFilter }}
+                            </time>
+                            {% endif %}
+                            
+                            <h3 class="related-work-title">
+                                {{ work.title }}
+                            </h3>
+                            
+                            {% if work.description %}
+                            <p class="related-work-excerpt">{{ work.description }}</p>
+                            {% endif %}
+                        </div>
                     </a>
-                    
-                    <div class="fichamento-content">
-                        <time class="fichamento-date" datetime="{{ post.date | dateIso }}">
-                            {{ post.date | dateFilter }}
-                        </time>
-                        
-                        <h3 class="fichamento-title">
-                            <a href="{{ post.url }}">{{ post.data.title }}</a>
-                        </h3>
-                        
-                        {% if post.data.description %}
-                        <p class="fichamento-excerpt">{{ post.data.description }}</p>
-                        {% endif %}
-                    </div>
                 </li>
-                {% endif %}
                 {% endfor %}
             </ul>
-
-            {% set segments = page.url.split('/') %}
-            {# Remove o último segmento vazio e o nome do post #}
-            {% set parentPath = "" %}
-
-            <div class="voltar-container" style="margin: 20px 0;">
-            <a href=".." class="btn btn-secondary">
-                &larr; Voltar para listagem
-            </a>
+            <div class="voltar-container" style="margin: 20px 0; padding: 0 2rem;">
+                <a href=".." class="btn btn-secondary">
+                    &larr; Voltar para listagem
+                </a>
             </div>
         </section>
+        {% endif %}
         {% endblock %}
     </main>
 
