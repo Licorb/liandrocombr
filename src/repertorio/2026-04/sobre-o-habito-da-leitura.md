@@ -13,7 +13,11 @@ relatedWorks:
   - title: "Os melhores livros que li em 2025"
     url: "/repertorio/os-melhores-livros-que-li-em-2025/"
     image: "/assets/img/posts/crime-cais-valongo.jpg"
-    description: "Novidades e clássicos que me agradaram por diferentes motivos, mas nem tanto"
+    description: "Novidades e clássicos que me agradaram por diferentes motivos, mas nem tanto."
+  - title: "Sobre hábitos analógicos"
+    url: "/repertorio/sobre-habitos-analogicos/"
+    image: "/assets/img/posts/capa-analogicos.jpg"
+    description: "Um esforço consciente para ficar longe das telas, com certa ironia."
     
 ---
 

@@ -23,7 +23,7 @@
     <section id="ponto-de-partida">
         <div class="hero-container">
             <div class="hero-image">
-                <img src="assets/img/gif-Liandro2.gif" alt="Liandro Ribeiro">
+                <img src="assets/img/gif-Liandro.gif" alt="Liandro Ribeiro">
             </div>
             <div class="hero-content">
                 <div class="hero-label">Repositório Pessoal</div>
@@ -44,6 +44,23 @@
             <div class="section-label">Leituras & Reflexões</div>
         </div>
         <div class="posts-grid">
+            
+            <a href="/repertorio/sobre-habitos-analogicos/">
+            <article class="post-card">
+                <img src="/assets/img/posts/capa-analogicos.jpg" alt="Thumbnail" class="post-image">
+                <div class="post-content">
+                    <h3>Sobre hábitos analógicos</h3>
+                    <p class="post-excerpt">Um esforço consciente para ficar longe das telas, com certa ironia.</p>
+                    <div class="post-meta">
+                        <p class="post-date">06/05/2026</p>
+                        <div class="post-tags">
+                            <span class="tag">habitos</span>
+                            <span class="tag">comportamento</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            </a>
             
             <a href="/repertorio/os-melhores-livros-que-li-em-2025/">
             <article class="post-card">
@@ -79,40 +96,6 @@
             </article>
             </a>
             
-            <a href="/repertorio/salvar-o-fogo/">
-            <article class="post-card">
-                <img src="https://placehold.net/3-800x600.png" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>Salvar o Fogo</h3>
-                    <p class="post-excerpt">O livro é contado pela personagem principal Luzia</p>
-                    <div class="post-meta">
-                        <p class="post-date">28/04/2026</p>
-                        <div class="post-tags">
-                            <span class="tag">literatura</span>
-                            <span class="tag">brasileira</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            </a>
-            
-            <a href="/repertorio/a-morte-de-ivan-ilitch/">
-            <article class="post-card">
-                <img src="https://placehold.net/8-800x600.png" alt="Thumbnail" class="post-image">
-                <div class="post-content">
-                    <h3>A Morte de Ivan Ilitch</h3>
-                    <p class="post-excerpt">O livro narra os meses finais da vida de Ivan</p>
-                    <div class="post-meta">
-                        <p class="post-date">28/04/2026</p>
-                        <div class="post-tags">
-                            <span class="tag">literatura</span>
-                            <span class="tag">filosofia</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            </a>
-            
         </div>
         <div class="section-actions" style="text-align: center; margin-top: 3rem;">
             <a href="repertorio/" class="btn btn-secondary">Ver tudo</a>
@@ -123,12 +106,24 @@
         <div class="section-header">
             <h2 class="section-title">Oficina</h2>
             <div class="section-label">Projetos Pessoais</div>
+            <p>Esses <b>não</b> são projetos relacionados à minha profissão. Vá ao <a href="https://www.behance.net/LiandroR" target="_blank">Behance</a> para ver mais.</p>
+            <br>
         </div>
          
         <div class="slider-wrapper">
             <button class="slider-btn prev" id="prev-btn">&larr;</button>
             <div class="slider-container">
                 <div class="oficina-slider" id="oficina-slider">
+                    
+                    <a href="/oficina/sketchbook/" class="project-link" target="_blank">
+                    <div class="project-card">
+                        <img src="https://placehold.net/8-800x600.png" alt="Dashboard de Treinos" class="project-image">
+                        <div class="project-info">
+                            <h3>Sketchbook</h3>
+                            <p>Uma boa desculpa para jogar RPG com minha filha</p>
+                        </div>
+                    </div>
+                    </a>
                     
                     <a href="/oficina/rabiscos/" class="project-link" target="_blank">
                     <div class="project-card">
@@ -142,10 +137,10 @@
                     
                     <a href="/oficina/este-site/" class="project-link" target="_blank">
                     <div class="project-card">
-                        <img src="https://placehold.net/8-800x600.png" alt="Dashboard de Treinos" class="project-image">
+                        <img src="/assets/img/oficina/site-3.jpg" alt="Dashboard de Treinos" class="project-image">
                         <div class="project-info">
-                            <h3>Este Site</h3>
-                            <p>Para brincar</p>
+                            <h3>Este site</h3>
+                            <p>Conhecimento técnico + modelos de IA</p>
                         </div>
                     </div>
                     </a>
@@ -196,16 +191,16 @@
         const slider = document.getElementById('oficina-slider');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-        const totalSlides = slider.children.length;
+        const totalSlides = Math.min(slider.children.length, 9); // Máximo de 9 itens
         let currentIndex = 0;
 
-        function getStep() {
+        function getCardsPerPage() {
             return window.innerWidth > 1024 ? 3 : 1;
         }
 
         function getMaxIndex() {
-            const step = getStep();
-            return Math.ceil(totalSlides / step) - 1;
+            const cardsPerPage = getCardsPerPage();
+            return Math.ceil(totalSlides / cardsPerPage) - 1;
         }
 
         prevBtn.addEventListener('click', () => {
@@ -220,10 +215,13 @@
 
         function updateSlider() {
             currentIndex = Math.max(0, Math.min(currentIndex, getMaxIndex()));
-            const step = getStep();
-            const targetIndex = Math.min(currentIndex * step, totalSlides - 1);
-            const targetCard = slider.children[targetIndex];
-            const offset = targetCard ? targetCard.offsetLeft : 0;
+            const cardsPerPage = getCardsPerPage();
+            const cardElement = slider.children[0];
+            if (!cardElement) return;
+            
+            const cardWidth = cardElement.offsetWidth;
+            const gap = 24; // 1.5rem = 24px
+            const offset = currentIndex * cardsPerPage * (cardWidth + gap);
             slider.style.transform = `translateX(-${offset}px)`;
             updateSliderControls();
         }
@@ -256,34 +254,9 @@
         window.addEventListener('resize', () => {
             updateSlider();
             createSliderControls();
-            if (window.innerWidth <= 1024) {
-                resetParallax();
-            }
         });
 
         createSliderControls();
-
-        const parallaxTargets = [...document.querySelectorAll('section, footer')];
-
-        // function handleParallax(event) {
-        //     if (window.innerWidth <= 1024) return;
-        //     const x = (event.clientX / window.innerWidth - 0.5) * 24;
-        //     const y = (event.clientY / window.innerHeight - 0.5) * 24;
-
-        //     parallaxTargets.forEach((el, index) => {
-        //         const depth = 1 + index * 0.75;
-        //         el.style.transform = `translate3d(${x / depth}px, ${y / depth * -1}px, 0)`;
-        //     });
-        // }
-
-        // function resetParallax() {
-        //     parallaxTargets.forEach(el => {
-        //         el.style.transform = 'translate3d(0, 0, 0)';
-        //     });
-        // }
-
-        // window.addEventListener('mousemove', handleParallax);
-        // window.addEventListener('mouseleave', resetParallax);
 
         // Lightbox functionality
         document.querySelectorAll('.project-image').forEach(img => {
