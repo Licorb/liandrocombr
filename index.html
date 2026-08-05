@@ -1,6 +1,355 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liandro Ribeiro | Portfolio — Design &amp; Usabilidade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Liandro Ribeiro</a>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#experiencia">Experiência</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<div class="nav-mobile-overlay" id="mobileMenu">
+  <a href="#projetos"    onclick="closeMobileMenu()">Projetos</a>
+  <a href="#experiencia" onclick="closeMobileMenu()">Experiência</a>
+  <a href="#contato"     onclick="closeMobileMenu()">Contato</a>
+</div>
+
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-rings" id="heroRings">
+    <div class="hero-ring"></div>
+    <div class="hero-ring"></div>
+    <div class="hero-ring"></div>
+  </div>
+
+  <div class="hero-photo-col" id="heroPhoto">
+    <div class="hero-photo-stage">
+      <div class="hero-photo-circle">
+        <img src="img/liandro.png" alt="Retrato de Liandro Ribeiro" />
+      </div>
+      <div class="hero-avail">
+        <div class="hero-avail-dot"></div>
+        <span>Disponível para projetos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-text-col" id="heroText">
+    <div class="hero-eyebrow">
+      <span>Design Gráfico &amp; Usabilidade</span>
+    </div>
+    <h1 class="hero-title">
+      Forma que <em>comunica.</em>
+      <span class="hero-title-b">Interface que respeita.</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      Trabalho na interseção entre identidade visual e experiência de uso — onde a estética serve a quem está do outro lado da tela.
+    </p>
+    <div class="hero-cta">
+      <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+      <a href="#contato" class="btn btn-ghost">Entre em contato</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <span>Rolar</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<section id="projetos" class="section-panel">
+  <div class="reveal">
+    <p class="section-label">Seleção de trabalhos</p>
+    <h2 class="section-title">Projetos</h2>
+    <p class="section-intro">Uma curadoria de projetos recentes em branding, interfaces e sistemas de design.</p>
+  </div>
+  <div class="proj-grid reveal">
+    <div class="proj-card" onclick="openProject(0)">
+      <div class="proj-thumb"><div class="proj-thumb-bg">App Escolar</div><div class="proj-hover"><span class="proj-hover-cat">UX / Interface</span><span class="proj-hover-name">Ver projeto</span></div></div>
+      <div class="proj-info"><span class="proj-name">App Escolar</span><span class="proj-cat">UX / Estratégia</span></div>
+    </div>
+    <div class="proj-card" onclick="openProject(1)">
+      <div class="proj-thumb"><div class="proj-thumb-bg">App Pega Bike</div><div class="proj-hover"><span class="proj-hover-cat">Motion</span><span class="proj-hover-name">Ver projeto</span></div></div>
+      <div class="proj-info"><span class="proj-name">User Interface</span><span class="proj-cat">UX / Estratégia</span></div>
+    </div>
+    <div class="proj-card" onclick="openProject(2)">
+      <div class="proj-thumb"><div class="proj-thumb-bg">Dashboard Financeiro</div><div class="proj-hover"><span class="proj-hover-cat">Branding</span><span class="proj-hover-name">Ver projeto</span></div></div>
+      <div class="proj-info"><span class="proj-name">Dashboard Financeiro</span><span class="proj-cat">User Interface</span></div>
+    </div>
+    <div class="proj-card" onclick="openProject(3)">
+      <div class="proj-thumb"><div class="proj-thumb-bg">Buscador de Partituras</div><div class="proj-hover"><span class="proj-hover-cat">Editorial</span><span class="proj-hover-name">Ver projeto</span></div></div>
+      <div class="proj-info"><span class="proj-name">Buscador de Partituras</span><span class="proj-cat">UX / Estratégia</span></div>
+    </div>
+    <div class="proj-card" onclick="openProject(4)">
+      <div class="proj-thumb"><div class="proj-thumb-bg">Interface Power BI</div><div class="proj-hover"><span class="proj-hover-cat">Design System</span><span class="proj-hover-name">Ver projeto</span></div></div>
+      <div class="proj-info"><span class="proj-name">Interface Power BI</span><span class="proj-cat">User Interface</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia" class="section-panel">
+  <div class="exp-grid">
+    <div>
+      <p class="section-label reveal">Trajetória</p>
+      <h2 class="section-title reveal">Experiência</h2>
+      <div class="bio-text reveal">
+        <p>Sou designer gráfico e de interfaces com mais de <strong>quinze anos de atuação</strong> em projetos que vão de identidades visuais a produtos digitais de grande escala.</p>
+        <p>Formado em Design Gráfico, passei por agências de publicidade, software houses e times de produto, que me deram uma visão ampla sobre como o design funciona a serviço dos usuários e do público que se quer atingir.</p>
+        <p>Trabalho colaborando com marcas e equipes que valorizam o cuidado com a experiência do usuário e a coerência visual como parte estratégica real do negócio.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left"><span class="collapse-role">Analista de Experiência do Usuário</span><span class="collapse-company">Sesc Departamento Nacional</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span class="collapse-year">2022 — presente</span><div class="collapse-icon">+</div></div>
+        </button>
+        <div class="collapse-body"><div class="collapse-body-inner">Projetos de experiência do usuário com proposição de interfaces gráficas para clientes internos e externos. Diversas aplicações webs que são utilizadas desde o início dos anos 2000 estão sendo reformuladas e passam por uma reestruturação tanto no visual quanto na arquitetura de informação, portanto minhas atividades se tornam um ponto nesse processo.<br>
+          A atividade no Departamento Nacional impacta diretamente milhares de funcionários, em centenas de unidades espalhadas por todo o Brasil.</div></div>
+      </div>
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left"><span class="collapse-role">Designer Pleno</span><span class="collapse-company">YDUQS/Estácio</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span class="collapse-year">2020 — 2022</span><div class="collapse-icon">+</div></div>
+        </button>
+        <div class="collapse-body"><div class="collapse-body-inner">Elaboração de aulas para Ensino à Distância a partir do conteúdo de Design Instrucional e conteúdo fornecido pelos conteudistas e professores. As aulas online foram um marco importante na estratégia da Universidade Estácio de Sá durante o período da pandemia, sendo líder do segmento de educação superior no Brasil.</div></div>
+      </div>
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left"><span class="collapse-role">Designer Pleno</span><span class="collapse-company">Controllab</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span class="collapse-year">2019 — 2020</span><div class="collapse-icon">+</div></div>
+        </button>
+        <div class="collapse-body"><div class="collapse-body-inner">Criação de interfaces para o sistema de clientes e para novos sistemas em implementação, além de manutenção e desenvolvimento do site institucional, hotsites, email marketing, etc.</div></div>
+      </div>
+      <div class="collapse-item">
+        <button class="collapse-btn" onclick="toggleCollapse(this)">
+          <div class="collapse-btn-left"><span class="collapse-role">Designer</span><span class="collapse-company">ASAsys Software</span></div>
+          <div style="display:flex;align-items:center;gap:12px"><span class="collapse-year">2014 — 2019</span><div class="collapse-icon">+</div></div>
+        </button>
+        <div class="collapse-body"><div class="collapse-body-inner">Atuei como designer abraçando desde a produção da parte gráfica impressa até as tecnologias web.<br>
+          Desenvolvi a mais atual identidade visual da empresa, com desenvolvimento e implementação do website. Também desenvolvi interfaces web e de aplicativos, além de pequenos trabalhos de tratamento de imagem, papelaria, etc.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="section-panel">
+  <p class="section-label reveal">Vamos conversar</p>
+  <h2 class="section-title reveal">Contato</h2>
+  <div class="contact-wrap reveal">
+    <a href="mailto:falecom@liandro.com.br" class="contact-email">falecom@liandro.com.br</a>
+    <div class="social-links">
+      <a href="https://www.behance.net/LiandroR" target="_blank" class="social-link">Behance</a>
+      <a href="https://www.linkedin.com/in/liandro/" target="_blank" class="social-link">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Liandro Ribeiro</span>
+  <span>Design &amp; Usabilidade — Rio de Janeiro, BR</span>
+</footer>
+
+<div class="poverlay" id="poverlay">
+  <button class="pov-close" id="povClose">✕</button>
+  <div class="pov-top">
+    <div class="pov-text" id="povText"></div>
+    <div class="pov-image"><div class="pov-image-label" id="povImgLabel"></div></div>
+  </div>
+  <div class="pov-strip" id="povStrip"></div>
+</div>
+<script>
+  /* ── HAMBURGER ── */
+  const burger      = document.getElementById('navBurger');
+  const mobileMenu  = document.getElementById('mobileMenu');
+
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  function closeMobileMenu() {
+    burger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const heroBg    = document.getElementById('heroBg');
+  const heroRings = document.getElementById('heroRings');
+  const heroPhoto = document.getElementById('heroPhoto');
+  const heroText  = document.getElementById('heroText');
+  const heroEl    = document.getElementById('hero');
+
+  function applyParallax() {
+    if (window.innerWidth <= 768) return;
+    const y  = window.scrollY;
+    const vh = window.innerHeight;
+    if (y > vh) return;
+    const p = y / vh;
+    heroBg.style.transform    = `translateY(${y * 0.4}px)`;
+    heroRings.style.transform = `translate(-50%, calc(-50% + ${y * 0.25}px))`;
+    heroPhoto.style.transform = `translateY(${y * 0.15}px)`;
+    heroText.style.transform  = `translateY(${y * 0.08}px)`;
+    heroEl.style.opacity = Math.max(0, 1 - Math.max(0, p - 0.5) * 3);
+  }
+
+  window.addEventListener('scroll', applyParallax, { passive: true });
+
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  const projects = [
+    { cat: 'UX / Estratégia', title: 'App Escolar', slides: [
+      { label: 'Visão geral', desc: 'Sistema de identidade visual completo para marca de cosméticos naturais — naming, logotipo, paleta e tipografia.' },
+      { label: 'Logotipo', desc: 'O símbolo integra as iniciais da marca em traço botanicamente inspirado, com precisão gráfica e leitura imediata.' },
+      { label: 'Aplicações', desc: 'Embalagens em papel reciclado com impressão em 2 cores e acabamento vegetal, reforçando o posicionamento sustentável.' },
+      { label: 'Digital', desc: 'Extensão do sistema para stories, e-mail marketing e apresentações comerciais da marca.' },
+    ]},
+    { cat: 'UX / Interface', title: 'App Pega Bike', slides: [
+      { label: 'Contexto', desc: 'Redesign de produto digital com foco em acessibilidade cognitiva e retenção — iniciado com pesquisa qualitativa aprofundada.' },
+      { label: 'Pesquisa', desc: 'Entrevistas com 24 estudantes e 8 tutores revelaram os principais pontos de atrito no fluxo de aprendizado.' },
+      { label: 'Interface', desc: 'Nova arquitetura de informação com componentes acessíveis (WCAG 2.1 AA) e redução de 40% no tempo de tarefas principais.' },
+      { label: 'Resultados', desc: 'Taxa de conclusão de cursos aumentou 28% nos três primeiros meses após o lançamento.' },
+    ]},
+    { cat: 'Editorial', title: 'Dashboard Financeiro', slides: [
+      { label: 'Projeto', desc: 'Direção de arte para publicação anual premiada na categoria editorial pela ADG Brasil, em versões impressa e digital.' },
+      { label: 'Grid', desc: 'Sistema modular baseado em colunas de 8px com respiração generosa e tipografia protagonista nas aberturas de seção.' },
+      { label: 'Fotografia', desc: 'Edição e tratamento de 200+ imagens para coerência visual sem perder a personalidade de cada ensaio.' },
+    ]},
+    { cat: 'Design System', title: 'Buscador de Partituras', slides: [
+      { label: 'Fundação', desc: 'Biblioteca de componentes de UI para produto SaaS com time distribuído entre Brasil, Portugal e Argentina.' },
+      { label: 'Tokens', desc: '120+ tokens cobrindo cor, tipografia, espaçamento, sombra e animação — sincronizados entre Figma e código via Style Dictionary.' },
+      { label: 'Documentação', desc: 'Guia de uso em Storybook com exemplos interativos, padrões de acessibilidade e histórico de decisões de design.' },
+    ]},
+    { cat: 'User Interface', title: 'Interface Power BI', slides: [
+      { label: 'Conceito', desc: 'Peças em motion design para campanha de lançamento de produto de tecnologia para o mercado brasileiro.' },
+      { label: 'Peças', desc: 'Abertura em 15s, bumpers de 5s, 12 formatos de stories e banners — 40 peças exportadas no total.' },
+      { label: 'Resultados', desc: 'CTR 2,3× acima da média do setor nos stories. Campanha com veiculação nacional em plataformas digitais.' },
+    ]},
+  ];
+
+  const stripColors = ['strip-c0','strip-c1','strip-c2','strip-c3','strip-c4'];
+  let curProj = 0, curSlide = 0;
+
+  function openProject(pIdx) {
+    curProj = pIdx; curSlide = 0;
+    renderOverlay();
+    document.getElementById('poverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeProject() {
+    document.getElementById('poverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('povClose').onclick = closeProject;
+
+  function slideStep(dir) {
+    const total = projects[curProj].slides.length + 1;
+    curSlide = Math.max(0, Math.min(curSlide + dir, total - 1));
+    renderOverlay();
+  }
+  function jumpToProject(pIdx) {
+    closeProject();
+    setTimeout(() => openProject(pIdx), 400);
+  }
+  function renderOverlay() {
+    const p = projects[curProj];
+    const total = p.slides.length;
+    const isNext = curSlide === total;
+    const nextPIdx = (curProj + 1) % projects.length;
+    const nextP = projects[nextPIdx];
+
+    document.getElementById('povImgLabel').textContent = isNext ? nextP.title : p.slides[curSlide].label;
+
+    if (isNext) {
+      document.getElementById('povText').className = 'pov-text is-next';
+      document.getElementById('povText').innerHTML = `
+        <span class="pov-next-eyebrow">Próximo projeto</span>
+        <p class="pov-next-title">${nextP.title}</p>
+        <button class="pov-next-btn" onclick="jumpToProject(${nextPIdx})">Ver projeto <span>→</span></button>
+        <div class="pov-arrows" style="margin-top:40px">
+          <button class="pov-arrow" onclick="slideStep(-1)">←</button>
+          <button class="pov-arrow" disabled>→</button>
+        </div>`;
+    } else {
+      const s = p.slides[curSlide];
+      document.getElementById('povText').className = 'pov-text';
+      document.getElementById('povText').innerHTML = `
+        <span class="pov-counter">${String(curSlide+1).padStart(2,'0')} — ${String(total).padStart(2,'0')}</span>
+        <p class="pov-cat">${p.cat}</p>
+        <h2 class="pov-title">${p.title}</h2>
+        <p class="pov-slide-label">${s.label}</p>
+        <p class="pov-desc">${s.desc}</p>
+        <div class="pov-arrows">
+          <button class="pov-arrow" ${curSlide===0?'disabled':''} onclick="slideStep(-1)">←</button>
+          <button class="pov-arrow" onclick="slideStep(1)">→</button>
+        </div>`;
+    }
+
+    const strip = document.getElementById('povStrip');
+    strip.innerHTML = '';
+    p.slides.forEach((sl, i) => {
+      const t = document.createElement('div');
+      t.className = `strip-thumb ${stripColors[curProj]} ${i===curSlide&&!isNext?'active':''}`;
+      t.textContent = sl.label;
+      t.onclick = () => { curSlide = i; renderOverlay(); };
+      strip.appendChild(t);
+    });
+    const nt = document.createElement('div');
+    nt.className = `strip-next-thumb ${isNext?'active':''}`;
+    nt.innerHTML = `<span class="sn-eyebrow">Próximo</span><span class="sn-title">${nextP.title}</span>`;
+    nt.onclick = () => { curSlide = total; renderOverlay(); };
+    strip.appendChild(nt);
+
+    const active = strip.querySelector('.active');
+    if (active) active.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('poverlay').classList.contains('open')) return;
+    if (e.key === 'Escape')     closeProject();
+    if (e.key === 'ArrowRight') slideStep(1);
+    if (e.key === 'ArrowLeft')  slideStep(-1);
+  });
+
+  function toggleCollapse(btn) {
+    const item = btn.closest('.collapse-item');
+    const body = item.querySelector('.collapse-body');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.collapse-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.collapse-body').style.maxHeight = '0';
+    });
+    if (!open) { item.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+  }
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liandro Ribeiro</title>
@@ -86,5 +435,6 @@
           </div>
         </div>
     </section>
+
 </body>
 </html>
