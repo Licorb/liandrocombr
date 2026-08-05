@@ -1,0 +1,113 @@
+﻿/* Estilos específicos de página para o template Nunjucks de oficina */
+
+.slider-main {
+    width: 100%;
+    height: 53vh;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.slider-image.active {
+    opacity: 1;
+}
+
+.slider-arrow {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #2a2a2a;
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.text-gallery-wrapper {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    align-items: stretch;
+}
+
+.text-content {
+    flex: 0 0 40%;
+    background: #fff;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow-y: auto;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+.slider-gallery {
+    flex: 0 0 calc(60% - 2rem);
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-bg);
+    overflow-x: auto;
+    overflow-y: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-around;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+}
+
+.gallery-thumbnail {
+    width: 90px;
+    height: 90px;
+    border: 3px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.gallery-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-thumbnail:hover {
+    border-color: var(--color-accent);
+    transform: scale(1.05);
+}
+
+.gallery-thumbnail.active {
+    border-color: var(--color-accent);
+    transform: scale(1.05);
+}
+
+.gallery-thumbnail.active {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
